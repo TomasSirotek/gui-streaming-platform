@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javagui.gui.controller.HelloController">
+
+         <top>
+             <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="45.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="370.94490814208984" minWidth="10.0" prefWidth="370.94490814208984" />
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                    <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="104.22846984863281" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="104.22846984863281" minWidth="10.0" prefWidth="68.67279052734375" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.5579833984375" minWidth="10.0" prefWidth="69.13011169433594" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="237.79046630859375" minWidth="10.0" prefWidth="158.86988830566406" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <MFXButton prefWidth="70.0" style="-fx-background-color: none;" text="Home" textFill="WHITE" GridPane.columnIndex="1" />
+                        <MFXButton style="-fx-background-color: none;" text="Search" textFill="WHITE" GridPane.columnIndex="2" />
+                        <MFXButton style="-fx-background-color: none;" text="Watchlist" textFill="WHITE" GridPane.columnIndex="3" />
+                        <ImageView fitHeight="40.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@assets/Disney_Plus_logo_PNG5.png" />
+                           </image>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </ImageView>
+                     </children>
+                  </GridPane>
+                  <MFXButton prefHeight="32.0" prefWidth="106.0" style="-fx-background-color: #0063e5#0063e5; -fx-border-color: #0063e5#0063e5; -fx-border-radius: 5;" text="SIGN UP NOW" textFill="WHITE" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin></MFXButton>
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </GridPane>
+         </top>
+
+</BorderPane>
