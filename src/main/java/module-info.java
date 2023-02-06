@@ -1,6 +1,7 @@
 module com.javagui.javagui {
     requires javafx.controls;
     requires javafx.fxml;
+    requires MaterialFX;
 
 
     opens com.javagui to javafx.fxml;

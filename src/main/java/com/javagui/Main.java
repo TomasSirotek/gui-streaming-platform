@@ -11,11 +11,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(Main.class.getResource("hello-view.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("hello-view.fxml")));
         stage.setTitle("Movie Recommendation System 0.01 Beta");
         // primaryStage.setFullScreen(true);
         stage.sizeToScene();
