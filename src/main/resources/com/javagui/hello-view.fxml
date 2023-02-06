@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,8 +12,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javagui.gui.controller.HelloController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #31343e#31343e #31343e#31343e;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javagui.gui.controller.HelloController">
 
          <top>
              <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="45.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
@@ -46,7 +50,7 @@
                         </ImageView>
                      </children>
                   </GridPane>
-                  <MFXButton prefHeight="32.0" prefWidth="106.0" style="-fx-background-color: #0063e5#0063e5; -fx-border-color: #0063e5#0063e5; -fx-border-radius: 5;" text="SIGN UP NOW" textFill="WHITE" GridPane.columnIndex="1">
+                  <MFXButton prefHeight="17.0" prefWidth="106.0" style="-fx-background-color: #0063e5#0063e5; -fx-border-color: #0063e5#0063e5; -fx-border-radius: 5;" text="SIGN UP NOW" textFill="WHITE" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin></MFXButton>
@@ -56,5 +60,40 @@
                </effect>
             </GridPane>
          </top>
+   <center>
+      <GridPane maxHeight="299.0" maxWidth="208.0" prefHeight="274.0" prefWidth="208.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="83.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="51.76377868652344" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="52.82318115234375" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="118.07635498046875" minHeight="10.0" prefHeight="38.83380126953125" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="51.16619873046875" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ImageView fitHeight="71.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/Disney_Plus_logo_PNG5.png" />
+               </image>
+            </ImageView>
+            <MFXPasswordField floatMode="DISABLED" maxHeight="36.0" prefHeight="36.0" prefWidth="202.0" style="-fx-background-color: #31343e#31343e; -fx-text-fill: white;" text="Password" GridPane.rowIndex="3" />
+            <MFXTextField floatMode="DISABLED" prefHeight="34.0" prefWidth="201.0" style="-fx-background-color: #31343e#31343e; -fx-text-fill: white;" text="Email" GridPane.rowIndex="2" />
+            <Label prefHeight="19.0" prefWidth="195.0" text="Log in with your credentials" textFill="WHITE" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <MFXButton prefHeight="34.0" prefWidth="200.0" style="-fx-background-color: #0063e5#0063e5; -fx-border-color: #0063e5#0063e5; -fx-border-radius: 5;" text="CONTINUE" textFill="WHITE" GridPane.rowIndex="4" />
+            <Label opacity="0.57" prefHeight="16.0" prefWidth="195.0" text="New to Disney+ Sign up" textFill="WHITE" GridPane.rowIndex="5">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+   </center>
 
 </BorderPane>
