@@ -1,5 +1,6 @@
 package com.javagui.gui.controller;
 
+import com.javagui.gui.model.CurrentUser;
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,6 +16,7 @@ import java.util.ResourceBundle;
 public class LoginController extends AbstractController implements Initializable {
     @FXML
     private MFXScrollPane pane,pane1,pane2;
+    private final CurrentUser currentUser = CurrentUser.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

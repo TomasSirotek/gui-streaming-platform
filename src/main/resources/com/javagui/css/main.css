@@ -41,7 +41,6 @@
     -fx-background-color: white;
     -fx-border-color: lightgray;
     -fx-border-width: 1;
-    -fx-effect: blur(3px);
 }
 
 .text-label {
@@ -50,3 +49,10 @@
     -fx-opacity: 0;
     -fx-transition: opacity 0.3s;
 }
+
+.input-field .text-input{
+    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+}
+
+

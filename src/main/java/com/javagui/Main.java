@@ -1,5 +1,7 @@
 package com.javagui;
 
+import com.javagui.gui.controller.AbstractController;
+import com.javagui.gui.controller.ControllerFactory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.BoundingBox;
@@ -14,30 +16,26 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class Main extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("hello-view.fxml")));
-        stage.setTitle("Movie Recommendation System 0.01 Beta");
-        // primaryStage.setFullScreen(true);
-        stage.sizeToScene();
-        stage.setMinWidth(stage.getWidth());
-        stage.setMinHeight(stage.getHeight());
-        stage.setScene(new Scene(root));
-        stage.show();
-
         Bounds rootBounds = root.getBoundsInLocal();
         double deltaW = stage.getWidth() - rootBounds.getWidth();
         double deltaH = stage.getHeight() - rootBounds.getHeight();
 
         Bounds prefBounds = getPrefBounds(root);
-
         stage.setMinWidth(prefBounds.getWidth() + deltaW);
         stage.setMinHeight(prefBounds.getHeight() + deltaH);
+        stage.setTitle("Movie Recommendation System 0.01 Beta");
+        stage.sizeToScene();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     private Bounds getPrefBounds(Node node) {
-        double prefWidth ;
-        double prefHeight ;
+        double prefWidth;
+        double prefHeight;
 
         Orientation bias = node.getContentBias();
         if (bias == Orientation.HORIZONTAL) {

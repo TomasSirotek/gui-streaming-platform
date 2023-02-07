@@ -1,5 +1,6 @@
 package com.javagui.gui.controller;
 
+
 import com.javagui.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,6 @@ public class ControllerFactory {
 
         final URL fxmlFileURL = Main.class.getResource(file);
         final FXMLLoader loader = new FXMLLoader(fxmlFileURL);
-
         final Parent view = loader.load();
         final AbstractController controller = loader.getController();
         controller.setView(view);
