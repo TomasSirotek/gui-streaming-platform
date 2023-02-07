@@ -22,7 +22,7 @@
          <top>
              <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="45.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="370.94490814208984" minWidth="10.0" prefWidth="370.94490814208984" />
+                  <ColumnConstraints hgrow="NEVER" maxWidth="370.94490814208984" minWidth="10.0" prefWidth="370.94490814208984" />
                 <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
@@ -55,8 +55,8 @@
                   </GridPane>
             <GridPane GridPane.columnIndex="1">
               <columnConstraints>
-                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" prefWidth="293.0" />
-                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="210.0" minWidth="10.0" prefWidth="136.0" />
+                <ColumnConstraints halignment="RIGHT" hgrow="NEVER" maxWidth="293.0" minWidth="10.0" prefWidth="293.0" />
+                <ColumnConstraints halignment="RIGHT" hgrow="NEVER" maxWidth="210.0" minWidth="10.0" prefWidth="136.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
