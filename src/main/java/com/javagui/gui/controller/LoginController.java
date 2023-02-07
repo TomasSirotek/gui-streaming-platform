@@ -1,21 +1,13 @@
 package com.javagui.gui.controller;
 
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
-import javafx.scene.AccessibleAttribute;
-import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.ScrollEvent;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,15 +18,16 @@ public class LoginController extends AbstractController implements Initializable
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        fillUI();
+    }
 
-
+    private void fillUI() {
         pane.setContent(constructGridPane());
         pane1.setContent(constructGridPane());
         pane2.setContent(constructGridPane());
         pane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         pane1.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         pane2.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-
     }
 
     private GridPane constructGridPane(){
@@ -49,9 +42,11 @@ public class LoginController extends AbstractController implements Initializable
             imageView.setPreserveRatio(true);
             imageView.setFitHeight(200);
             imageView.setFitWidth(140);
+            imageView.getStyleClass().add("image-card");
+            // Create the text label
+            label.getStyleClass().add("text-label");
             pane2.add(imageView,i,0);
         }
-
         return pane2;
     }
 

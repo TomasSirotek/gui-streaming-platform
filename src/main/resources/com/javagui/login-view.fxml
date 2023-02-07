@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<MFXScrollPane fitToWidth="true" prefHeight="400.0" prefWidth="527.0" style="-fx-background-color: #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javagui.gui.controller.LoginController">
+<MFXScrollPane fitToWidth="true" prefHeight="400.0" prefWidth="527.0" style="-fx-background-color: #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e;" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javagui.gui.controller.LoginController">
    <content>
       <GridPane prefHeight="718.0" prefWidth="513.0" style="-fx-background-color: #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e;">
         <columnConstraints>

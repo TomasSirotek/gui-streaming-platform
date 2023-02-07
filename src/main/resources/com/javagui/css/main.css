@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat&family=ZCOOL+KuaiLe&display=swap");
+
+.fontDesign {
+    -fx-font-family: 'Caveat', cursive;
+    -fx-font-size: 35px;
+}
+
+* {
+    -fx-nord0: #192C35;
+    -fx-nord1: #4FC4F4;
+    -fx-nord2: #434C5E;
+    -fx-nord3: #4C566A;
+    -fx-nord4: #D8DEE9;
+    -fx-nord5: #E5E9F0;
+    -fx-nord6: #ECEFF4;
+    -fx-nord7: #8FBCBB;
+    -fx-nord8: #88C0D0;
+    -fx-nord9: #81A1C1;
+    -fx-nord10: #5E81AC;
+}
+
+.image-card:hover {
+    -fx-scale-x: 1.1;
+    -fx-cursor: HAND;
+    -fx-scale-y: 1.1;
+    -fx-background-color: black;
+    -fx-border-color: red;
+    -fx-padding: 10;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.image-card:hover .text-label {
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+    -fx-opacity: 1;
+}
+
+.image-card {
+    -fx-background-radius: 10;
+    -fx-background-color: white;
+    -fx-border-color: lightgray;
+    -fx-border-width: 1;
+    -fx-effect: blur(3px);
+}
+
+.text-label {
+    -fx-text-fill: black;
+    -fx-font-size: 16;
+    -fx-opacity: 0;
+    -fx-transition: opacity 0.3s;
+}
