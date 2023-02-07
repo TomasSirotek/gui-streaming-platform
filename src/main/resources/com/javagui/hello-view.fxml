@@ -2,6 +2,7 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import io.github.palexdev.materialfx.controls.MFXProgressSpinner?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -13,9 +14,10 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #31343e#31343e #31343e#31343e;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javagui.gui.controller.HelloController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #31343e#31343e #31343e#31343e;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javagui.gui.controller.HelloController">
 
          <top>
              <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="45.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
@@ -95,6 +97,17 @@
                         <Font name="System Bold" size="10.0" />
                      </font>
                   </Label>
+                  <MFXProgressSpinner fx:id="spinner" visible="false" GridPane.rowIndex="2">
+                     <color2>
+                        <Color red="0.25882354378700256" green="0.5215686559677124" blue="0.95686274766922" />
+                     </color2>
+                     <color3>
+                        <Color red="0.25882354378700256" green="0.5215686559677124" blue="0.95686274766922" />
+                     </color3>
+                     <color4>
+                        <Color red="0.25882354378700256" green="0.5215686559677124" blue="0.95686274766922" />
+                     </color4>
+                  </MFXProgressSpinner>
                </children>
             </GridPane>
          </children>

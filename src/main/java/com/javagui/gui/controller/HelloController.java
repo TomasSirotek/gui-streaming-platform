@@ -1,10 +1,8 @@
 package com.javagui.gui.controller;
 
 import com.javagui.Main;
-import io.github.palexdev.materialfx.controls.MFXButton;
-import io.github.palexdev.materialfx.controls.MFXPasswordField;
-import io.github.palexdev.materialfx.controls.MFXScrollPane;
-import io.github.palexdev.materialfx.controls.MFXTextField;
+import io.github.palexdev.materialfx.controls.*;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +19,8 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class HelloController extends AbstractController implements Initializable {
+    @FXML
+    private MFXProgressSpinner spinner;
     @FXML
     private MFXButton navActionBtn;
     @FXML
@@ -71,12 +71,27 @@ public class HelloController extends AbstractController implements Initializable
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        swapViews(parent.getView());
-        navItemOne.setVisible(true);
-        navItemTwo.setVisible(true);
-        navItemThree.setVisible(true);
-        navActionBtn.setText("LOG OUT");
+        spinner.setVisible(true);
+
+        AbstractController finalParent = parent;
+        new Thread(() -> {
+            try {
+                Thread.sleep(5000);
+                Platform.runLater(() -> {
+                    spinner.setVisible(false);
+                    swapViews(finalParent.getView());
+
+                    navItemOne.setVisible(true);
+                    navItemTwo.setVisible(true);
+                    navItemThree.setVisible(true);
+                    navActionBtn.setText("LOG OUT");
+                });
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
 
         actionEvent.consume();
     }
+
 }
