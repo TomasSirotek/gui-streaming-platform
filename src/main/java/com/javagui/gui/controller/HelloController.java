@@ -76,7 +76,7 @@ public class HelloController extends AbstractController implements Initializable
         AbstractController finalParent = parent;
         new Thread(() -> {
             try {
-                Thread.sleep(5000);
+                Thread.sleep(1000); // change to like 5s
                 Platform.runLater(() -> {
                     spinner.setVisible(false);
                     swapViews(finalParent.getView());
