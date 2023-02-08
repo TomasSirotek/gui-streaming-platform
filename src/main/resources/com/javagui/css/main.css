@@ -23,23 +23,12 @@
     -fx-scale-x: 1.1;
     -fx-cursor: HAND;
     -fx-scale-y: 1.1;
-    -fx-background-color: black;
-    -fx-border-color: red;
-    -fx-padding: 10;
-    -fx-background-radius: 10;
-}
-
-.image-card:hover .text-label {
-    -fx-text-fill: white;
-    -fx-font-size: 20;
-    -fx-opacity: 1;
 }
 
 .image-card {
-    -fx-background-radius: 10;
-    -fx-background-color: white;
+    -fx-background-radius: 5;
     -fx-border-color: lightgray;
-    -fx-border-width: 1;
+    -fx-border-width: 0.5;
 }
 
 .text-label {
@@ -58,6 +47,4 @@
     visibility: hidden;
 }
 
-.image-card:hover + .text-label {
-    visibility: visible;
-}
+

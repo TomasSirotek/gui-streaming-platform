@@ -55,18 +55,19 @@ public class HelloController extends AbstractController implements Initializable
 
     @FXML
     public void tryLogin(ActionEvent actionEvent) {
-        if(isValidated()){
-            CurrentUser currentUser = CurrentUser.getInstance();
-            currentUser.login(emailField.getText(),pswField.getText());
-            if(currentUser.isAuthorized()){
-                redirectHome();
-                actionEvent.consume();
-            }else {
-                errorLabel.setVisible(true);
-                errorLabel.setText("Wrong email or password");
-                actionEvent.consume();
-            }
-        }
+        redirectHome();
+//        if(isValidated()){
+//            CurrentUser currentUser = CurrentUser.getInstance();
+//            currentUser.login(emailField.getText(),pswField.getText());
+//            if(currentUser.isAuthorized()){
+//                redirectHome();
+//                actionEvent.consume();
+//            }else {
+//                errorLabel.setVisible(true);
+//                errorLabel.setText("Wrong email or password");
+//                actionEvent.consume();
+//            }
+//        }
     }
 
     private boolean isValidated() {
@@ -81,33 +82,37 @@ public class HelloController extends AbstractController implements Initializable
     }
 
     private void redirectHome() {
+
         AbstractController parent = null;
         try {
             parent = loadNodes("home-view.fxml");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        spinner.setVisible(true);
-        AbstractController finalParent = parent;
-        new Thread(() -> {
-            try {
-                Thread.sleep(1000); // change to like 5s
-                Platform.runLater(() -> {
-                    CurrentUser c = CurrentUser.getInstance();
-                    spinner.setVisible(false);
-                    navItemOne.setVisible(true);
-                    navItemTwo.setVisible(true);
-                    navItemThree.setVisible(true);
-                    loggedUser.setVisible(true);
-                    loggedUser.setText(c.getUserName());
-                    navActionBtn.setText("LOG OUT");
 
-                    swapViews(finalParent.getView());
-                });
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
+       // spinner.setVisible(true);
+
+        AbstractController finalParent = parent;
+        swapViews(finalParent.getView());
+//        new Thread(() -> {
+//            try {
+//                Thread.sleep(1000); // change to like 5s
+//                Platform.runLater(() -> {
+//                    CurrentUser c = CurrentUser.getInstance();
+//                    spinner.setVisible(false);
+//                    navItemOne.setVisible(true);
+//                    navItemTwo.setVisible(true);
+//                    navItemThree.setVisible(true);
+//                    loggedUser.setVisible(true);
+//                    loggedUser.setText(c.getUserName());
+//                    navActionBtn.setText("LOG OUT");
+//
+//                    swapViews(finalParent.getView());
+//                });
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }).start();
 
     }
 

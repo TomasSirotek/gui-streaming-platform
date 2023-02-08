@@ -20,17 +20,20 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("hello-view.fxml")));
+        stage.setTitle("Movie Recommendation System 0.01 Beta");
+        stage.sizeToScene();
+
+        stage.setScene(new Scene(root));
+        stage.show();
+
         Bounds rootBounds = root.getBoundsInLocal();
         double deltaW = stage.getWidth() - rootBounds.getWidth();
         double deltaH = stage.getHeight() - rootBounds.getHeight();
 
         Bounds prefBounds = getPrefBounds(root);
+
         stage.setMinWidth(prefBounds.getWidth() + deltaW);
         stage.setMinHeight(prefBounds.getHeight() + deltaH);
-        stage.setTitle("Movie Recommendation System 0.01 Beta");
-        stage.sizeToScene();
-        stage.setScene(new Scene(root));
-        stage.show();
     }
 
     private Bounds getPrefBounds(Node node) {
