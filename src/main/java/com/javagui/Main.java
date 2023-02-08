@@ -19,7 +19,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("hello-view.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("login-view.fxml")));
         stage.setTitle("Movie Recommendation System 0.01 Beta");
         stage.sizeToScene();
 

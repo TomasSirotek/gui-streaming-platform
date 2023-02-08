@@ -9,13 +9,12 @@ import java.util.Optional;
 
 public class CurrentUser {
     private static CurrentUser instance;
-    // Private variables to hold the user's name and password
+    private User currentUser = null;
+
     private String userName;
 
     private String password;
     private final static String PASSWORD = "1234";
-
-    private boolean isLoggedIn;
 
     private final ILogicManager logicManager;
 
@@ -36,32 +35,33 @@ public class CurrentUser {
     }
 
     // Public getter and setter methods for the name and password
-    public String getUserName() {
-        return userName;
+    public User getLoggedUser(){
+        return this.currentUser;
     }
 
     public void login(String userName,String password){
+        this.currentUser = new User(0,userName);
         this.userName = userName;
         this.password = password;
-        this.isLoggedIn = true;
     }
 
     public void logout(){
-        this.userName = null;
+        this.currentUser = null;
         this.password = null;
-        this.isLoggedIn = false;
-    }
-
-    public boolean isLoggedIn() {
-        return this.isLoggedIn;
     }
 
     // Method to check whether the user is authorized
     public boolean isAuthorized() {
-        User user = logicManager.getUser(this.userName);
-        return Optional.ofNullable(user)
-                .filter(u -> u.getName().equals(this.userName))
-                .filter(u -> this.password.equals(PASSWORD))
-                .isPresent();
+        User user = logicManager.getUser(userName);
+
+        if (Optional.ofNullable(user)
+                .filter(u -> password.equals(PASSWORD))
+                .isPresent()) {
+            this.currentUser = user;
+            return true;
+        } else {
+            this.currentUser = null;
+            return false;
+        }
     }
 }

@@ -12,10 +12,6 @@ public class LogicManager implements ILogicManager{
         dataMgr.updateCacheFromDisk();
     }
 
-    @Override
-    public Collection<User> getAllUsers() {
-        return dataMgr.getAllUsers().values();
-    }
 
     // Gets all rated movies for one user and returns them sorted by avg. best by all users.
     @Override
@@ -25,7 +21,7 @@ public class LogicManager implements ILogicManager{
         for(Rating rating: u.getRatings())
             top.add(rating.getMovie());
 
-        Collections.sort(top, Comparator.comparing(Movie::getAverageRating).reversed());
+        top.sort(Comparator.comparing(Movie::getAverageRating).reversed());
 
         return top;
     }

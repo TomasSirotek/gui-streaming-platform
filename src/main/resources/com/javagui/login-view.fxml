@@ -17,7 +17,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #31343e#31343e #31343e#31343e;" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javagui.gui.controller.HelloController">
+<BorderPane fx:id="borderPane" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #31343e#31343e #31343e#31343e;" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javagui.gui.controller.LoginController">
 
          <top>
              <GridPane prefHeight="45.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
@@ -99,13 +99,13 @@
                      </image>
                   </ImageView>
                   <MFXPasswordField fx:id="pswField" floatMode="DISABLED" maxHeight="36.0" prefHeight="36.0" prefWidth="197.0" promptText="Password" style="-fx-background-color: #31343e#31343e;" styleClass="input-field" GridPane.rowIndex="3" />
-                  <MFXTextField fx:id="emailField" floatMode="DISABLED" prefHeight="34.0" prefWidth="196.0" promptText="Email" style="-fx-background-color: #31343e#31343e;" styleClass="input-field" GridPane.rowIndex="2" />
+                  <MFXTextField fx:id="emailField" floatMode="DISABLED" prefHeight="34.0" prefWidth="196.0" promptText="Email" style="-fx-background-color: #31343e#31343e;" styleClass="input-field" text="Georgi Facello" GridPane.rowIndex="2" />
                   <Label prefHeight="19.0" prefWidth="194.0" text="Log in with your credentials" textFill="WHITE" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <MFXButton onAction="#tryLogin" prefHeight="34.0" prefWidth="195.0" style="-fx-background-color: #0063e5#0063e5; -fx-border-color: #0063e5#0063e5; -fx-border-radius: 5;" text="CONTINUE" textFill="WHITE" GridPane.rowIndex="5" />
+                  <MFXButton fx:id="tryLogin" prefHeight="34.0" prefWidth="195.0" style="-fx-background-color: #0063e5#0063e5; -fx-border-color: #0063e5#0063e5; -fx-border-radius: 5;" text="CONTINUE" textFill="WHITE" GridPane.rowIndex="5" />
                   <Label opacity="0.57" prefHeight="16.0" prefWidth="195.0" text="New to Disney+ Sign up" textFill="WHITE" GridPane.rowIndex="6">
                      <font>
                         <Font name="System Bold" size="10.0" />

@@ -8,19 +8,19 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<MFXScrollPane fitToWidth="true" prefHeight="400.0" prefWidth="527.0" style="-fx-background-color: #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e;" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javagui.gui.controller.LoginController">
+<MFXScrollPane fitToWidth="true" prefHeight="400.0" prefWidth="527.0" style="-fx-background-color: #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e;" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javagui.gui.controller.HomeController">
    <content>
-      <GridPane prefHeight="741.0" prefWidth="513.0" style="-fx-background-color: #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e;">
+      <GridPane prefHeight="927.0" prefWidth="513.0" style="-fx-background-color: #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e;">
         <columnConstraints>
           <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints maxHeight="234.0" minHeight="10.0" prefHeight="39.0" valignment="CENTER" vgrow="NEVER" />
-            <RowConstraints maxHeight="271.5" minHeight="10.0" prefHeight="224.96820068359375" vgrow="ALWAYS" />
-            <RowConstraints maxHeight="271.5" minHeight="6.0" prefHeight="39.0" valignment="CENTER" vgrow="NEVER" />
-            <RowConstraints maxHeight="271.5" minHeight="10.0" prefHeight="213.4735107421875" vgrow="ALWAYS" />
-            <RowConstraints maxHeight="271.5" minHeight="8.0" prefHeight="39.0" valignment="CENTER" vgrow="NEVER" />
-            <RowConstraints maxHeight="271.5" minHeight="10.0" prefHeight="169.0" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="271.5" minHeight="10.0" prefHeight="238.94699096679688" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="271.5" minHeight="6.0" prefHeight="36.053009033203125" valignment="CENTER" vgrow="NEVER" />
+            <RowConstraints maxHeight="290.6855163574219" minHeight="10.0" prefHeight="244.0750732421875" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="271.5" minHeight="8.0" prefHeight="39.0750732421875" valignment="CENTER" vgrow="NEVER" />
+            <RowConstraints maxHeight="271.5" minHeight="10.0" prefHeight="245.9249267578125" vgrow="ALWAYS" />
         </rowConstraints>
          <children>
             <MFXScrollPane fx:id="pane" fitToHeight="true" fitToWidth="true" style="-fx-background-color: #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e;" GridPane.rowIndex="1" />

@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 import java.util.Objects;
 
 public abstract class AbstractController {
-    private Parent root;
+    protected Parent root;
 
     public Parent getView(){
         return this.root;
