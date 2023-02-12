@@ -1,9 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Caveat&family=ZCOOL+KuaiLe&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500;600;700&display=swap');
 
-.fontDesign {
-    -fx-font-family: 'Caveat', cursive;
-    -fx-font-size: 35px;
-}
 
 * {
     -fx-nord0: #192C35;
@@ -18,6 +14,34 @@
     -fx-nord9: #81A1C1;
     -fx-nord10: #5E81AC;
 }
+
+/*.root {*/
+/*    -fx-font: 14px Montserrat;*/
+/*    -fx-background-color: #31343e;*/
+/*}*/
+
+.root{
+    /*-fx-font-family:'Montserrat';*/
+    -fx-font: 14px Montserrat;
+    /*-fx-background-color: #31343e;*/
+    -fx-background-image: url("../assets/bg-test.jpeg");
+    -fx-background-size: cover;
+    -fx-font-weight: bold;
+}
+
+.test-pane{
+    -fx-background-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5));
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+    -fx-padding: 10;
+}
+
+.login-label{
+    -fx-font-weight: bold;
+    -fx-font-size: 16;
+}
+
+
 
 .image-card:hover {
     -fx-scale-x: 1.1;
@@ -38,13 +62,36 @@
     -fx-transition: opacity 0.3s;
 }
 
+.input-field{
+    -fx-background-color: rgba(255, 255, 255, 0.8);
+    -fx-text-fill: black;
+    -fx-font-size:12;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
 .input-field .text-input{
-    -fx-prompt-text-fill: white;
-    -fx-text-fill: white;
+    -fx-prompt-text-fill: black;
+    -fx-text-fill: black;
+    -fx-font-size:18;
+
+}
+
+.input-field .text-input .input-field:selected{
+    -fx-border-color: #0063e5;
+    -fx-background-color: red;
 }
 
 .text-label {
     visibility: hidden;
 }
+
+.action-button{
+    -fx-font-size: 14;
+    -fx-font-weight: 600;
+    -fx-border-radius: 5;
+    -fx-background-color: #0063e5;
+    -fx-border-color: #0063e5;
+    -fx-cursor: HAND;
+}
+
 
 

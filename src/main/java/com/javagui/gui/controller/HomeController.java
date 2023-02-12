@@ -1,23 +1,20 @@
 package com.javagui.gui.controller;
 
 import com.javagui.be.Movie;
+import com.javagui.be.TopMovie;
 import com.javagui.bll.api.ApiService;
 import com.javagui.bll.api.IApiService;
 import com.javagui.gui.model.AppModel;
 import com.javagui.gui.model.CurrentUser;
 import com.javagui.gui.model.MovieDTO;
-import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXProgressBar;
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
-import javafx.application.Platform;
 import javafx.collections.ObservableList;
-import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -27,13 +24,13 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
-import java.util.HashMap;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class HomeController extends AbstractController implements Initializable {
@@ -55,17 +52,6 @@ public class HomeController extends AbstractController implements Initializable 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
          this.apiService = new ApiService();
-//        MFXButton logoutBtn = (MFXButton) root.lookup("#navActionBtn");
-//        logoutBtn.setOnAction(this::logOut);
-     //  this.appModel = new AppModel();
-      // appModel.loadData(CurrentUser.getInstance().getLoggedUser());
-
-
-      //  appModel.getObsTopMovieSeen().forEach(System.out::println);
-       // fillUI();
-//        var test  = appModel.getObsTopMovieSeen();
-//        appModel.getObsTopMovieSeen().forEach(System.out::println);
-
     }
 
     public void setData(AppModel appModel){
@@ -110,15 +96,16 @@ public class HomeController extends AbstractController implements Initializable 
         swapViews(finalParent.getView());
     }
 
-    private void fillUI() {
-        pane.setContent(constructGridPane(10,appModel.getObsTopMovieSeen()));
-        pane1.setContent(constructGridPane(10,appModel.getObsTopMovieSeen()));
-        pane2.setContent(constructGridPane(10,appModel.getObsTopMovieNotSeen()));
 
-        // pane1.setContent(constructGridPane(10,appModel.getObsTopMoviesSimilarUsers()));
+    public void fillUI() {
+        constructPane(pane, appModel.getObsTopMovieSeen());
+        constructPane(pane1, appModel.getObsTopMoviesSimilarUsers());
+        constructPane(pane2, appModel.getObsTopMovieNotSeen());
+    }
+
+    private void constructPane(MFXScrollPane pane, ObservableList<?> movieList) {
+        pane.setContent(constructGridPane(10, movieList));
         pane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        pane1.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        pane2.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
     }
 
 
@@ -126,29 +113,49 @@ public class HomeController extends AbstractController implements Initializable 
      * main method for creation grid sections
      * @return constructed GridPane with its elements
      */
-    private GridPane constructGridPane(int amountToDisplay,ObservableList<Movie> topMovieSeen){
+    private GridPane constructGridPane(int amountToDisplay,ObservableList<?> movieList){
+        Objects.requireNonNull(movieList,"List of movies cannot be empty");
         GridPane pane2 = new GridPane();
         pane2.setHgap(10);
         pane2.setVgap(10);
         pane2.setAlignment(Pos.CENTER);
 
+        List<Object> randomMovies = movieList.stream()
+                .limit(amountToDisplay)
+                .collect(Collectors.toList());
+
         IntStream.range(0, amountToDisplay)
                 .parallel()
                 .forEach(i -> {
-                    Label label = constructLabel(topMovieSeen.get(i).getTitle());
-                   // ImageView imageView = constructImage(label);
-                    StackPane stackPane = constructStackPane(label, new ImageView());
+                    Object obj = randomMovies.get(i);
+                    Label[] labels = { null, null, null};
+                    if (obj instanceof Movie) {
+                        labels[0] = constructLabel(((Movie) obj).getTitle());
+//                        labels[1] = constructLabel(String.valueOf(((Movie) obj).getYear()));
+//                        labels[2] = constructLabel(String.valueOf(((Movie) obj).getAverageRating()));
+                    } else if (obj instanceof TopMovie) {
+                        labels[0] = constructLabel(((TopMovie) obj).getMovie().getTitle());
+//                        labels[1] = constructLabel(String.valueOf(((TopMovie) obj).getYear()));
+//                        labels[2] = constructLabel(String.valueOf(((TopMovie) obj).getAverageRating()));
+                    }
 
-                    synchronized (pane2) {
-                        pane2.add(stackPane, i, 0);
+                    if (labels != null) {
+                        var imageView = new ImageView("https://www.retro-synthwave.com/wp-content/uploads/2021/05/02-army-of-the-dead-poster.jpg");
+                        imageView.setFitHeight(200);
+                        imageView.setFitWidth(140);
+                        StackPane stackPane = constructStackPane(labels,imageView);
+                        synchronized (pane2) {
+                            pane2.add(stackPane, i, 0);
+                        }
                     }
                 });
        return pane2;
     }
 
-    private StackPane constructStackPane(Label label,ImageView imageView) {
+    private StackPane constructStackPane(Label[] labels,ImageView imageView) {
         StackPane stack = new StackPane();
-        stack.getChildren().addAll(imageView, label);
+        stack.getChildren().addAll(imageView,labels[0]);
+//        Arrays.stream(labels).forEach(x -> stack.getChildren().add(x));
         stack.getStyleClass().add("image-card");
         stack.setAlignment(Pos.CENTER);
         GridPane.setHgrow(stack, Priority.ALWAYS);
