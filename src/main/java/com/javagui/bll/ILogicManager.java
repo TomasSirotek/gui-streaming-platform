@@ -14,4 +14,6 @@ public interface ILogicManager {
     List<UserSimilarity> getTopSimilarUsers(User user);
     List<TopMovie> getTopMoviesFromSimilarPeople(User u);
     User getUser(String userName);
+
+    Collection<User> getAllUsers();
 }

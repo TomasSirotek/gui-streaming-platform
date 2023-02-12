@@ -36,9 +36,15 @@ public class LoginController extends AbstractController implements Initializable
     @FXML
     private MFXProgressSpinner spinner;
 
+    private AppModel appModel;
+
+    private long timerStartMillis = 0;
+    private String timerMsg = "";
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tryLogin.setOnAction(this::tryLogin);
+       this.appModel = new AppModel();
+       tryLogin.setOnAction(this::tryLogin);
     }
 
     private AbstractController loadNodes(String path) throws IOException {
@@ -53,37 +59,46 @@ public class LoginController extends AbstractController implements Initializable
     public void tryLogin(ActionEvent actionEvent) {
         if (isValidated()) {
             spinner.setVisible(true);
+
             errorLabel.setText("");
 
-            Task<Void> currentTask = new Task<>() {
+            Task<Void> loadDataTask = new Task<>() {
                 @Override
                 protected Void call() {
-                    try {
-                        Thread.sleep(3000);
-                    } catch (InterruptedException e) {
-                        // not doing anything
-                    }
-                    CurrentUser currentUser = CurrentUser.getInstance();
-                    currentUser.login(emailField.getText(), pswField.getText());
-
-                    if (!isCancelled()) {
-                        Platform.runLater(() -> {
-                            if (currentUser.isAuthorized()) {
-                                setSettings(currentUser);
-                                redirectHome();
-                            } else {
-                                errorLabel.setVisible(true);
-                                errorLabel.setText("Wrong email or password");
-                            }
-                            spinner.setVisible(false);
-                        });
-                    }
+                    startTimer("Loading users ");
+                    appModel.loadUsers();
                     return null;
                 }
             };
-            new Thread(currentTask).start();
+            loadDataTask.setOnSucceeded(event -> {
+                stopTimer();
+                CurrentUser currentUser = CurrentUser.getInstance();
+                startTimer("Logging in ...");
+                currentUser.login(emailField.getText(), pswField.getText());
+                if (currentUser.isAuthorized()) {
+                    stopTimer();
+                    setSettings(currentUser);
+                    redirectHome();
+                } else {
+                    errorLabel.setVisible(true);
+                    errorLabel.setText("Wrong email or password");
+                }
+                spinner.setVisible(false);
+            });
+            new Thread(loadDataTask).start();
         }
     }
+
+
+    private void stopTimer(){
+        System.out.println(timerMsg + " took : " + (System.currentTimeMillis() - timerStartMillis) + "ms");
+    }
+
+    private void startTimer(String message){
+        timerStartMillis = System.currentTimeMillis();
+        timerMsg = message;
+    }
+
 
     private void setSettings(CurrentUser currentUser) {
         spinner.setVisible(false);
@@ -114,6 +129,9 @@ public class LoginController extends AbstractController implements Initializable
             throw new RuntimeException(e);
         }
         AbstractController finalParent = parent;
+        HomeController homeController = (HomeController) finalParent;
+        homeController.setParentController(this);
+        homeController.setData(appModel);
         swapViews(finalParent.getView());
     }
 

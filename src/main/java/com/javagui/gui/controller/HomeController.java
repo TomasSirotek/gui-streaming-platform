@@ -7,7 +7,9 @@ import com.javagui.gui.model.AppModel;
 import com.javagui.gui.model.CurrentUser;
 import com.javagui.gui.model.MovieDTO;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXProgressBar;
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
@@ -29,8 +31,14 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.stream.IntStream;
 
 public class HomeController extends AbstractController implements Initializable {
+    @FXML
+    private MFXProgressBar progressBar;
     @FXML
     private MFXScrollPane pane,pane1,pane2;
 
@@ -41,17 +49,12 @@ public class HomeController extends AbstractController implements Initializable 
     private long timerStartMillis = 0;
     private String timerMsg = "";
 
+    private final CurrentUser currUser = CurrentUser.getInstance();
+    private LoginController loginController;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        startTimer("Creating app model and service ");
-        this.appModel = new AppModel();
          this.apiService = new ApiService();
-        stopTimer();
-
-
-        startTimer("Loading all data for user: " + CurrentUser.getInstance().getLoggedUser().toString());
-        appModel.loadData(CurrentUser.getInstance().getLoggedUser());
-        stopTimer();
 //        MFXButton logoutBtn = (MFXButton) root.lookup("#navActionBtn");
 //        logoutBtn.setOnAction(this::logOut);
      //  this.appModel = new AppModel();
@@ -63,6 +66,27 @@ public class HomeController extends AbstractController implements Initializable 
 //        var test  = appModel.getObsTopMovieSeen();
 //        appModel.getObsTopMovieSeen().forEach(System.out::println);
 
+    }
+
+    public void setData(AppModel appModel){
+        this.appModel = appModel;
+
+        startTimer("Loading all data for user: " + currUser);
+        Task<Void> loadDataTask = new Task<>() {
+            @Override
+            protected Void call() {
+                appModel.loadData(currUser.getLoggedUser());
+                return null;
+            }
+        };
+        loadDataTask.setOnSucceeded(event -> {
+            stopTimer();
+            startTimer("Filling UI took");
+            fillUI();
+            stopTimer();
+            progressBar.setVisible(false);
+        });
+        new Thread(loadDataTask).start();
     }
 
     private void stopTimer(){
@@ -89,9 +113,9 @@ public class HomeController extends AbstractController implements Initializable 
     private void fillUI() {
         pane.setContent(constructGridPane(10,appModel.getObsTopMovieSeen()));
         pane1.setContent(constructGridPane(10,appModel.getObsTopMovieSeen()));
-
-      //  pane1.setContent(constructGridPane(10,appModel.getObsTopMoviesSimilarUsers()));
         pane2.setContent(constructGridPane(10,appModel.getObsTopMovieNotSeen()));
+
+        // pane1.setContent(constructGridPane(10,appModel.getObsTopMoviesSimilarUsers()));
         pane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         pane1.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         pane2.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -107,32 +131,19 @@ public class HomeController extends AbstractController implements Initializable 
         pane2.setHgap(10);
         pane2.setVgap(10);
         pane2.setAlignment(Pos.CENTER);
-//
-//        for (int i = 0; i < amountToDisplay ; i++) {
-//            Label label = constructLabel(topMovieSeen.get(i).getTitle());
-//            ImageView imageView = constructImage(label);
-//            pane2.add(constructStackPane(label,imageView), i, 0);
-//        }
-//        return pane2;
-        HashMap<String, ImageView> imageViewCache = new HashMap<>();
 
-        for (int i = 0; i < amountToDisplay ; i++) {
-            Label label = constructLabel(topMovieSeen.get(i).getTitle());
-            ImageView imageView;
+        IntStream.range(0, amountToDisplay)
+                .parallel()
+                .forEach(i -> {
+                    Label label = constructLabel(topMovieSeen.get(i).getTitle());
+                   // ImageView imageView = constructImage(label);
+                    StackPane stackPane = constructStackPane(label, new ImageView());
 
-            if (imageViewCache.containsKey(label.getText())) {
-                imageView = imageViewCache.get(label.getText());
-            } else {
-                imageView = constructImage(label);
-                imageViewCache.put(label.getText(), imageView);
-            }
-
-            pane2.add(constructStackPane(label, imageView), i, 0);
-        }
-
-        return pane2;
-
-
+                    synchronized (pane2) {
+                        pane2.add(stackPane, i, 0);
+                    }
+                });
+       return pane2;
     }
 
     private StackPane constructStackPane(Label label,ImageView imageView) {
@@ -146,10 +157,6 @@ public class HomeController extends AbstractController implements Initializable 
 
     private ImageView constructImage(Label label) {
 
-//        String fileName = "/com/javagui/assets/totalrecall-1.jpeg";
-//        InputStream inputStream = HomeController.class.getResourceAsStream(fileName);
-       // Image image = new Image(apiService.getMovieByTitle(label.getText()).Poster);
-     //  ImageView imageView = new ImageView(image);
         String labelText = label.getText();
         int colonIndex = labelText.indexOf(":");
         if (colonIndex != -1) {
@@ -160,7 +167,7 @@ public class HomeController extends AbstractController implements Initializable 
         if (movieDTO.Poster != null && !movieDTO.Poster.equals("N/A")) {
             imageView.setImage(new Image(movieDTO.Poster));
         } else {
-            imageView.setImage(new Image("file:src/main/resources/com/assets/totalrecall-1.jpeg"));
+            imageView.setImage(new Image("https://www.retro-synthwave.com/wp-content/uploads/2020/08/le-doc.jpg"));
         }
 
         imageView.setPreserveRatio(true);
@@ -201,4 +208,7 @@ public class HomeController extends AbstractController implements Initializable 
     }
 
 
+    public void setParentController(LoginController loginController) {
+        this.loginController = loginController;
+    }
 }
