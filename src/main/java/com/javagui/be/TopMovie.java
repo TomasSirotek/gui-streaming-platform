@@ -28,20 +28,20 @@ public class TopMovie {
         this.rawRatings = rawRatings;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return movie.getTitle();
     }
 
-    public int getYear(){
+    public int getYear() {
         return movie.getYear();
     }
 
-    public double getAverageRating(){
-        double sum=0;
-        for (double rating : rawRatings){
-            sum+=rating;
+    public double getAverageRating() {
+        double sum = 0;
+        for (double rating : rawRatings) {
+            sum += rating;
         }
-        return sum/rawRatings.size();
+        return sum / rawRatings.size();
     }
 
     @Override

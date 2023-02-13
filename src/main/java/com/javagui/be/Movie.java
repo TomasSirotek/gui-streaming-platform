@@ -16,14 +16,14 @@ public class Movie {
         this.ratings = new ArrayList<>();
     }
 
-    public double getAverageRating(){
+    public double getAverageRating() {
         double sum = 0;
-        for (Rating r: ratings){
-            sum+=r.getRating();
+        for (Rating r : ratings) {
+            sum += r.getRating();
         }
-        if(ratings.size()==0)
+        if (ratings.size() == 0)
             return 0;
-        return sum/ratings.size();
+        return sum / ratings.size();
     }
 
     public int getId() {
@@ -50,14 +50,14 @@ public class Movie {
         return ratings;
     }
 
-    public int getRatingsSize(){
+    public int getRatingsSize() {
         return ratings.size();
     }
 
     @Override
     public String toString() {
-        return  title + ", " + year +
+        return title + ", " + year +
                 ", ratings=" + ratings.size() +
-                ", avg="+ Math.round(getAverageRating()*10)/10.0;
+                ", avg=" + Math.round(getAverageRating() * 10) / 10.0;
     }
 }

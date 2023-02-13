@@ -5,46 +5,48 @@
     -fx-nord0: #0063e5;
 }
 
-.root{
+.root {
     -fx-font-weight: 700;
 }
 
-.content-pane{
+.content-pane {
     -fx-background-image: url("../assets/mainBg.jpeg");
     -fx-background-size: cover;
 }
 
-.action-button{
+.action-button {
     -fx-font-size: 14;
     -fx-font-weight: 600;
     -fx-border-radius: 5;
     -fx-background-color: -fx-nord0;
-    -fx-border-color:-fx-nord0;
+    -fx-border-color: -fx-nord0;
     -fx-cursor: HAND;
 }
 
 /* LOGIN PAGE*/
-.login-pane{
+.login-pane {
     -fx-background-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
     -fx-background-radius: 10;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
     -fx-padding: 10;
 }
-.login-label{
+
+.login-label {
     -fx-font-size: 16;
 }
 
-.err-label{
+.err-label {
     -fx-font-size: 12;
 }
 
-.input-field{
+.input-field {
     -fx-background-color: rgba(255, 255, 255, 0.8);
     -fx-text-fill: black;
-    -fx-font-size:14;
+    -fx-font-size: 14;
 
 }
-.mfx-password-field:focused{
+
+.mfx-password-field:focused {
     -fx-border-width: 3;
     -fx-border-color: -fx-nord0;
 }
@@ -53,11 +55,12 @@
     -fx-focus-color: -fx-nord0;
     -fx-faint-focus-color: -fx-nord0;
 }
-.mfx-text-field{
+
+.mfx-text-field {
     -fx-focus-traversable: false;
 }
 
-.mfx-text-field:focused{
+.mfx-text-field:focused {
     -fx-border-width: 3;
     -fx-border-color: -fx-nord0;
 }
@@ -70,7 +73,7 @@
 .input-field .text-input {
     -fx-prompt-text-fill: grey;
     -fx-text-fill: black;
-    -fx-font-size:12;
+    -fx-font-size: 12;
 }
 
 /* HOME VIEW */
@@ -93,6 +96,7 @@
     -fx-opacity: 0;
     -fx-transition: opacity 0.3s;
 }
+
 .text-label {
     visibility: hidden;
 }

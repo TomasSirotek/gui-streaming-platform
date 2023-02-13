@@ -8,20 +8,18 @@ import com.javagui.bll.LogicManager;
 import java.util.Optional;
 
 public class CurrentUser {
-    private static CurrentUser instance;
-    private User currentUser = null;
-
-    private String userName;
-
-    private String password;
     private final static String PASSWORD = "1234";
-
+    private static CurrentUser instance;
     private final ILogicManager logicManager;
+    private User currentUser = null;
+    private String userName;
+    private String password;
 
     // Private constructor to prevent direct instantiation
-    private CurrentUser(){
+    private CurrentUser() {
         this.logicManager = new LogicManager();
     }
+
     // Public static method to get the singleton instance
     public static CurrentUser getInstance() {
         if (instance == null) {
@@ -35,17 +33,17 @@ public class CurrentUser {
     }
 
     // Public getter and setter methods for the name and password
-    public User getLoggedUser(){
+    public User getLoggedUser() {
         return this.currentUser;
     }
 
-    public void login(String userName,String password){
-        this.currentUser = new User(0,userName);
+    public void login(String userName, String password) {
+        this.currentUser = new User(0, userName);
         this.userName = userName;
         this.password = password;
     }
 
-    public void logout(){
+    public void logout() {
         this.currentUser = null;
         this.password = null;
     }

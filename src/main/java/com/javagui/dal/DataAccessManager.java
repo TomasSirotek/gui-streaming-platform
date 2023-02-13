@@ -1,7 +1,6 @@
 package com.javagui.dal;
 
 
-
 import com.javagui.be.Movie;
 import com.javagui.be.Rating;
 import com.javagui.be.User;
@@ -34,12 +33,12 @@ public class DataAccessManager {
         return movies;
     }
 
-    public List<Rating> getAllRatings(){
+    public List<Rating> getAllRatings() {
         return ratings;
     }
 
 
-    public void updateCacheFromDisk(){
+    public void updateCacheFromDisk() {
         loadAllRatings();
     }
 

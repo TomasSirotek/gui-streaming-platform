@@ -23,7 +23,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -34,16 +37,15 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class HomeController extends AbstractController implements Initializable {
-    @FXML
-    private MFXProgressBar progressBar;
-    @FXML
-    private MFXScrollPane pane, pane1, pane2;
 
     private final String PLACEHOLDER_IMG = "https://www.retro-synthwave.com/wp-content/uploads/2019/09/American-Horror-Story-1984-9.jpg";
 
     private final int NUMBER_TO_DISPLAY = 10;
     private final CurrentUser currUser = CurrentUser.getInstance();
-
+    @FXML
+    private MFXProgressBar progressBar;
+    @FXML
+    private MFXScrollPane pane, pane1, pane2;
     private LoginController loginController;
     private AppModel appModel;
     private IApiService apiService;

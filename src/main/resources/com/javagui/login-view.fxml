@@ -1,175 +1,198 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
-<?import io.github.palexdev.materialfx.controls.MFXProgressSpinner?>
-<?import io.github.palexdev.materialfx.controls.MFXTextField?>
-<?import javafx.geometry.Insets?>
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="borderPane" prefHeight="500.0" prefWidth="800.0"
+            stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/18"
+            fx:controller="com.javagui.gui.controller.LoginController">
 
-<BorderPane fx:id="borderPane" prefHeight="500.0" prefWidth="800.0" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javagui.gui.controller.LoginController">
-
-         <top>
-             <GridPane prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                  <ColumnConstraints hgrow="NEVER" maxWidth="370.94490814208984" minWidth="10.0" prefWidth="370.94490814208984" />
-                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+    <top>
+        <GridPane prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: #000000;"
+                  BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="NEVER" maxWidth="370.94490814208984" minWidth="10.0"
+                                   prefWidth="370.94490814208984"/>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                     <columnConstraints>
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="128.0" />
-                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="104.22846984863281" minWidth="10.0" prefWidth="69.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.5579833984375" minWidth="10.0" prefWidth="69.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="237.79046630859375" minWidth="10.0" prefWidth="106.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0"
+                                           prefWidth="128.0"/>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="104.22846984863281"
+                                           minWidth="10.0" prefWidth="69.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.5579833984375" minWidth="10.0"
+                                           prefWidth="69.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="237.79046630859375" minWidth="10.0"
+                                           prefWidth="106.0"/>
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                     </rowConstraints>
-                     <children>
-                        <MFXButton fx:id="navItemOne" prefWidth="70.0" style="-fx-background-color: none;" text="Home" textFill="WHITE" visible="false" GridPane.columnIndex="1" />
-                        <MFXButton fx:id="navItemTwo" style="-fx-background-color: none;" text="Search" textFill="WHITE" visible="false" GridPane.columnIndex="2" />
-                        <MFXButton fx:id="navItemThree" style="-fx-background-color: none;" text="Watchlist" textFill="WHITE" visible="false" GridPane.columnIndex="3" />
+                    <children>
+                        <MFXButton fx:id="navItemOne" prefWidth="70.0" style="-fx-background-color: none;" text="Home"
+                                   textFill="WHITE" visible="false" GridPane.columnIndex="1"/>
+                        <MFXButton fx:id="navItemTwo" style="-fx-background-color: none;" text="Search" textFill="WHITE"
+                                   visible="false" GridPane.columnIndex="2"/>
+                        <MFXButton fx:id="navItemThree" style="-fx-background-color: none;" text="Watchlist"
+                                   textFill="WHITE" visible="false" GridPane.columnIndex="3"/>
                         <ImageView fitHeight="40.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@assets/appLogo.png" />
-                           </image>
-                           <GridPane.margin>
-                              <Insets />
-                           </GridPane.margin>
+                            <image>
+                                <Image url="@assets/appLogo.png"/>
+                            </image>
+                            <GridPane.margin>
+                                <Insets/>
+                            </GridPane.margin>
                         </ImageView>
-                     </children>
-                  </GridPane>
-            <GridPane maxHeight="-Infinity" maxWidth="-Infinity" GridPane.columnIndex="1">
-              <columnConstraints>
-                <ColumnConstraints halignment="RIGHT" maxWidth="293.0" minWidth="10.0" prefWidth="278.0" />
-                <ColumnConstraints halignment="RIGHT" maxWidth="210.0" minWidth="10.0" prefWidth="151.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                        <MFXButton fx:id="navActionBtn" buttonType="RAISED" depthLevel="LEVEL3" prefHeight="30.0" prefWidth="99.0" styleClass="action-button" text="SIGN UP " textFill="WHITE" GridPane.columnIndex="1">
-                     <GridPane.margin>
-                        <Insets right="20.0" />
-                     </GridPane.margin>
-                     <font>
-                        <Font name="Montserrat Bold" size="10.0" />
-                     </font>
-                  </MFXButton>
-                  <Label fx:id="loggedUser" text="USER NAME" textFill="WHITE" visible="false" />
-               </children>
-            </GridPane>
-               </children>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </GridPane>
-         </top>
-   <center>
-      <StackPane fx:id="contentPane" prefWidth="1071.0" styleClass="content-pane" BorderPane.alignment="CENTER">
-         <children>
-            <GridPane maxHeight="357.0" maxWidth="257.0" prefHeight="357.0" prefWidth="257.0" styleClass="login-pane">
-              <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="119.21089172363281" minHeight="10.0" prefHeight="108.23902893066406" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="27.480667114257812" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="58.80328369140625" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="54.922149658203125" valignment="TOP" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="118.07635498046875" minHeight="10.0" prefHeight="16.922149658203125" valignment="CENTER" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="44.077850341796875" valignment="CENTER" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="28.647552490234375" valignment="TOP" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <ImageView fitHeight="82.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@assets/appLogo.png" />
-                     </image>
-                  </ImageView>
-                  <MFXPasswordField fx:id="pswField" floatMode="DISABLED" maxHeight="36.0" prefHeight="36.0" prefWidth="200.0" promptText="Password" styleClass="input-field" GridPane.rowIndex="3" />
-                  <MFXTextField fx:id="emailField" floatMode="DISABLED" prefHeight="34.0" prefWidth="199.0" promptText="Email" styleClass="input-field" text="Georgi Facello" GridPane.rowIndex="2" />
-                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="199.0" styleClass="login-label" text="Log in to your account " textFill="WHITE" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <MFXButton fx:id="tryLogin" prefHeight="34.0" prefWidth="195.0" styleClass="action-button" text="CONTINUE" textFill="WHITE" GridPane.rowIndex="5">
-                     <effect>
-                        <DropShadow>
-                           <color>
-                              <Color red="0.5600000023841858" green="0.548799991607666" blue="0.548799991607666" opacity="0.3578543961048126" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font></MFXButton>
-                  <HBox GridPane.rowIndex="6">
-                     <children>
-                        <Label opacity="0.57" prefHeight="16.0" prefWidth="88.0" text="New to Disney+ " textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="10.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
+                    </children>
+                </GridPane>
+                <GridPane maxHeight="-Infinity" maxWidth="-Infinity" GridPane.columnIndex="1">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="RIGHT" maxWidth="293.0" minWidth="10.0" prefWidth="278.0"/>
+                        <ColumnConstraints halignment="RIGHT" maxWidth="210.0" minWidth="10.0" prefWidth="151.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <MFXButton fx:id="navActionBtn" buttonType="RAISED" depthLevel="LEVEL3" prefHeight="30.0"
+                                   prefWidth="99.0" styleClass="action-button" text="SIGN UP " textFill="WHITE"
+                                   GridPane.columnIndex="1">
+                            <GridPane.margin>
+                                <Insets right="20.0"/>
+                            </GridPane.margin>
+                            <font>
+                                <Font name="Montserrat Bold" size="10.0"/>
+                            </font>
+                        </MFXButton>
+                        <Label fx:id="loggedUser" text="USER NAME" textFill="WHITE" visible="false"/>
+                    </children>
+                </GridPane>
+            </children>
+            <effect>
+                <DropShadow/>
+            </effect>
+        </GridPane>
+    </top>
+    <center>
+        <StackPane fx:id="contentPane" prefWidth="1071.0" styleClass="content-pane" BorderPane.alignment="CENTER">
+            <children>
+                <GridPane maxHeight="357.0" maxWidth="257.0" prefHeight="357.0" prefWidth="257.0"
+                          styleClass="login-pane">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="119.21089172363281" minHeight="10.0" prefHeight="108.23902893066406"
+                                        vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="27.480667114257812"
+                                        vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="58.80328369140625"
+                                        vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="54.922149658203125"
+                                        valignment="TOP" vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="118.07635498046875" minHeight="10.0" prefHeight="16.922149658203125"
+                                        valignment="CENTER" vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="44.077850341796875"
+                                        valignment="CENTER" vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="28.647552490234375"
+                                        valignment="TOP" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <ImageView fitHeight="82.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@assets/appLogo.png"/>
+                            </image>
+                        </ImageView>
+                        <MFXPasswordField fx:id="pswField" floatMode="DISABLED" maxHeight="36.0" prefHeight="36.0"
+                                          prefWidth="200.0" promptText="Password" styleClass="input-field"
+                                          GridPane.rowIndex="3"/>
+                        <MFXTextField fx:id="emailField" floatMode="DISABLED" prefHeight="34.0" prefWidth="199.0"
+                                      promptText="Email" styleClass="input-field" text="Georgi Facello"
+                                      GridPane.rowIndex="2"/>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="199.0" styleClass="login-label"
+                               text="Log in to your account " textFill="WHITE" GridPane.rowIndex="1">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
                         </Label>
-                        <Label opacity="0.57" prefHeight="16.0" prefWidth="73.0" text="Sign up" textFill="#78a3ff" underline="true">
-                           <font>
-                              <Font name="System Bold" size="11.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
+                        <MFXButton fx:id="tryLogin" prefHeight="34.0" prefWidth="195.0" styleClass="action-button"
+                                   text="CONTINUE" textFill="WHITE" GridPane.rowIndex="5">
+                            <effect>
+                                <DropShadow>
+                                    <color>
+                                        <Color red="0.5600000023841858" green="0.548799991607666"
+                                               blue="0.548799991607666" opacity="0.3578543961048126"/>
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                            <font>
+                                <Font name="System Bold" size="13.0"/>
+                            </font>
+                        </MFXButton>
+                        <HBox GridPane.rowIndex="6">
+                            <children>
+                                <Label opacity="0.57" prefHeight="16.0" prefWidth="88.0" text="New to Disney+ "
+                                       textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="10.0"/>
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets top="5.0"/>
+                                    </HBox.margin>
+                                </Label>
+                                <Label opacity="0.57" prefHeight="16.0" prefWidth="73.0" text="Sign up"
+                                       textFill="#78a3ff" underline="true">
+                                    <font>
+                                        <Font name="System Bold" size="11.0"/>
+                                    </font>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND"/>
+                                    </cursor>
+                                    <HBox.margin>
+                                        <Insets top="5.0"/>
+                                    </HBox.margin>
+                                </Label>
+                            </children>
+                            <effect>
+                                <DropShadow/>
+                            </effect>
+                            <padding>
+                                <Insets left="22.0"/>
+                            </padding>
+                        </HBox>
+                        <MFXProgressSpinner fx:id="spinner" visible="false" GridPane.rowIndex="2">
+                            <color2>
+                                <Color red="0.25882354378700256" green="0.5215686559677124" blue="0.95686274766922"/>
+                            </color2>
+                            <color3>
+                                <Color red="0.25882354378700256" green="0.5215686559677124" blue="0.95686274766922"/>
+                            </color3>
+                            <color4>
+                                <Color red="0.25882354378700256" green="0.5215686559677124" blue="0.95686274766922"/>
+                            </color4>
+                        </MFXProgressSpinner>
+                        <Label fx:id="errorLabel" prefHeight="19.0" prefWidth="195.0" styleClass="err-label"
+                               text="Please fill all fields *" textFill="#e40000" visible="false" GridPane.rowIndex="4">
+                            <font>
+                                <Font name="System Bold" size="15.0"/>
+                            </font>
                         </Label>
-                     </children>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                     <padding>
-                        <Insets left="22.0" />
-                     </padding>
-                  </HBox>
-                  <MFXProgressSpinner fx:id="spinner" visible="false" GridPane.rowIndex="2">
-                     <color2>
-                        <Color red="0.25882354378700256" green="0.5215686559677124" blue="0.95686274766922" />
-                     </color2>
-                     <color3>
-                        <Color red="0.25882354378700256" green="0.5215686559677124" blue="0.95686274766922" />
-                     </color3>
-                     <color4>
-                        <Color red="0.25882354378700256" green="0.5215686559677124" blue="0.95686274766922" />
-                     </color4>
-                  </MFXProgressSpinner>
-                  <Label fx:id="errorLabel" prefHeight="19.0" prefWidth="195.0" styleClass="err-label" text="Please fill all fields *" textFill="#e40000" visible="false" GridPane.rowIndex="4">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </GridPane>
-         </children>
-      </StackPane>
-   </center>
+                    </children>
+                </GridPane>
+            </children>
+        </StackPane>
+    </center>
 
 </BorderPane>

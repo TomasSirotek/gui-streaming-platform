@@ -12,18 +12,19 @@ import javafx.collections.ObservableList;
 
 public class AppModel {
 
-    ILogicManager logic = new LogicManager();
     // Models of the data in the view
-    private final ObservableList<User>  obsUsers = FXCollections.observableArrayList();
+    private final ObservableList<User> obsUsers = FXCollections.observableArrayList();
     private final ObservableList<Movie> obsTopMovieSeen = FXCollections.observableArrayList();
     private final ObservableList<Movie> obsTopMovieNotSeen = FXCollections.observableArrayList();
-    private final ObservableList<UserSimilarity>  obsSimilarUsers = FXCollections.observableArrayList();
+    private final ObservableList<UserSimilarity> obsSimilarUsers = FXCollections.observableArrayList();
     private final ObservableList<TopMovie> obsTopMoviesSimilarUsers = FXCollections.observableArrayList();
+    ILogicManager logic = new LogicManager();
 
-    public void loadUsers(){
+    public void loadUsers() {
         obsUsers.clear();
         obsUsers.addAll(logic.getAllUsers());
     }
+
     public void loadData(User user) {
         obsTopMovieSeen.clear();
         obsTopMovieSeen.addAll(logic.getTopAverageRatedMovies(user));
@@ -37,6 +38,7 @@ public class AppModel {
         obsTopMoviesSimilarUsers.clear();
         obsTopMoviesSimilarUsers.addAll(logic.getTopMoviesFromSimilarPeople(user));
     }
+
     public ObservableList<Movie> getObsTopMovieSeen() {
         return obsTopMovieSeen;
     }

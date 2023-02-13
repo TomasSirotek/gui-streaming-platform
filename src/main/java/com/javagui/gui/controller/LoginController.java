@@ -2,14 +2,17 @@ package com.javagui.gui.controller;
 
 import com.javagui.gui.model.AppModel;
 import com.javagui.gui.model.CurrentUser;
-import io.github.palexdev.materialfx.controls.*;
+import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXPasswordField;
+import io.github.palexdev.materialfx.controls.MFXProgressSpinner;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
-import javafx.scene.layout.*;
+import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,13 +40,10 @@ public class LoginController extends AbstractController implements Initializable
 
     private AppModel appModel;
 
-    private long timerStartMillis = 0;
-    private String timerMsg = "";
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       this.appModel = new AppModel();
-       tryLogin.setOnAction(this::tryLogin);
+        this.appModel = new AppModel();
+        tryLogin.setOnAction(this::tryLogin);
     }
 
     private AbstractController loadNodes(String path) throws IOException {
@@ -63,18 +63,14 @@ public class LoginController extends AbstractController implements Initializable
             Task<Void> loadDataTask = new Task<>() {
                 @Override
                 protected Void call() {
-                    startTimer("Loading users ");
                     appModel.loadUsers();
                     return null;
                 }
             };
             loadDataTask.setOnSucceeded(event -> {
-                stopTimer();
                 CurrentUser currentUser = CurrentUser.getInstance();
-                startTimer("Logging in ...");
                 currentUser.login(emailField.getText(), pswField.getText());
                 if (currentUser.isAuthorized()) {
-                    stopTimer();
                     setSettings(currentUser);
                     redirectHome();
                 } else {
@@ -86,17 +82,6 @@ public class LoginController extends AbstractController implements Initializable
             new Thread(loadDataTask).start();
         }
     }
-
-
-    private void stopTimer(){
-        System.out.println(timerMsg + " took : " + (System.currentTimeMillis() - timerStartMillis) + "ms");
-    }
-
-    private void startTimer(String message){
-        timerStartMillis = System.currentTimeMillis();
-        timerMsg = message;
-    }
-
 
     private void setSettings(CurrentUser currentUser) {
         spinner.setVisible(false);
@@ -129,7 +114,7 @@ public class LoginController extends AbstractController implements Initializable
         AbstractController finalParent = parent;
         HomeController homeController = (HomeController) finalParent;
         homeController.setParentController(this);
-        homeController.setData(appModel,navActionBtn);
+        homeController.setData(appModel, navActionBtn);
         swapViews(finalParent.getView());
     }
 

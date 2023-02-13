@@ -12,7 +12,7 @@ import java.util.Objects;
 public class ControllerFactory {
 
     public static AbstractController loadFxmlFile(String file) throws IOException {
-        Objects.requireNonNull(file,"Error: FXML file must not be null");
+        Objects.requireNonNull(file, "Error: FXML file must not be null");
 
         final URL fxmlFileURL = Main.class.getResource(file);
         final FXMLLoader loader = new FXMLLoader(fxmlFileURL);

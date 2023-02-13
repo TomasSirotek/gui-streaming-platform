@@ -25,21 +25,21 @@ public class UserSimilarity {
         this.similarity = similarity;
     }
 
-    public int getId(){
+    public int getId() {
         return user.getId();
     }
 
-    public String getName(){
+    public String getName() {
         return user.getName();
     }
 
-    public String getSimilarityPercent(){
-        return Math.round(similarity*100) + "%";
+    public String getSimilarityPercent() {
+        return Math.round(similarity * 100) + "%";
     }
 
     @Override
     public String toString() {
         return "user=" + user +
-                ", similarity=" +getSimilarityPercent();
+                ", similarity=" + getSimilarityPercent();
     }
 }

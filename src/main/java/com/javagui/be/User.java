@@ -30,7 +30,7 @@ public class User {
         return ratings;
     }
 
-    public int getRatingsSize(){
+    public int getRatingsSize() {
         return ratings.size();
     }
 

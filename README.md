@@ -27,9 +27,11 @@
   </p>
 
 # Problem
+
 What is the best way to present the recommendations to the user?
 
-# Solution 
+# Solution
+
 Create a GUI that shows recommendations to the user in a cool way.
 
 <!-- TABLE OF CONTENTS -->
@@ -69,27 +71,29 @@ Create a GUI that shows recommendations to the user in a cool way.
 <!-- ABOUT THE PROJECT -->
 
 ## Features
+
 - [x] Abstract controller
-- [x] User authentication 
+- [x] User authentication
     - [x] Basic login with user name and password
-    - [x] User log out 
-    - [x] Simple validation for empty fields 
-    - [x] Complete error handling 
+    - [x] User log out
+    - [x] Simple validation for empty fields
+    - [x] Complete error handling
     - [x] Enhanced user experience with multithreading
     - [x] Usage of CSS for UX enhancement
 - [x] Movies dashboard
-    - [x] Display of all movies for all 3 required methods 
+    - [x] Display of all movies for all 3 required methods
     - [x] Movies are constructed inside MFXScrollPane
-    - [x] API calls to receive the images for movies 
-    - [x] Display of all movies with its title,year and rating 
+    - [x] API calls to receive the images for movies
+    - [x] Display of all movies with its title,year and rating
     - [x] Dynamic star rating display ★★★★☆
     - [x] Dynamically created parts of GUI
     - [x] Usage of CSS for UX enhancement (Scrollpanes)
-      - [x] User is able to scroll left-to-right right-to-left in each movies recommendation to view amount that is displayed
-      - [x] Hover effect on each movie that displays necessary informations 
-- [x] Multithreading in Java Fx 
+        - [x] User is able to scroll left-to-right right-to-left in each movies recommendation to view amount that is
+          displayed
+        - [x] Hover effect on each movie that displays necessary informations
+- [x] Multithreading in Java Fx
     - [x] Use of tasks,multithreading,tasks
-    - [X] Not blocking the main JavaFx thread loading all needed files 
+    - [X] Not blocking the main JavaFx thread loading all needed files
 
 Back end is based on <br>
 https://github.com/jeppeml/MovieRecommendationSystem-CachedImplementation
@@ -97,22 +101,24 @@ https://github.com/jeppeml/MovieRecommendationSystem-CachedImplementation
 ## Style guide
 
 **Typography**
+
 * [Montserrat](https://fonts.google.com/specimen/Montserrat)
 
-Key parts why I chose to use this popular sans-serif font 
-  * _Legibility_ 
-    * Clean and modern design 
-  * _Character_ 
-    * Distinctive character 
-  * _Versatility_
-    * Can be used in wide range of applications 
-  
-    
+Key parts why I chose to use this popular sans-serif font
+
+* _Legibility_
+    * Clean and modern design
+* _Character_
+    * Distinctive character
+* _Versatility_
+    * Can be used in wide range of applications
+
 **Color pallet**
+
 * Primary color  [#0063e5]()
 * Secondary color [#000000]()
 
-**Effects** 
+**Effects**
 
 * [Glassmorphism]()
 * [Gaussian blue]()
@@ -125,7 +131,9 @@ Key parts why I chose to use this popular sans-serif font
 * [Custom css]()
 
 ## Application design
-Application consist of two FXML views 
+
+Application consist of two FXML views
+
 - login-view.fxml
 - home-view.fxml
 
@@ -134,6 +142,7 @@ Application consist of two FXML views
 ![Login-page](https://user-images.githubusercontent.com/72190589/218592107-4080de78-063d-4d9b-a733-bb6bcccde2b7.png)
 
 ### Dashboard page
+
 ![Dashboard-page](https://user-images.githubusercontent.com/72190589/218592132-4e4758a6-89b5-4c07-a78a-2ed995acf889.png)
 
 ## Application design patterns
@@ -144,7 +153,7 @@ Application consist of two FXML views
 ## Licence
 
 Distributed under the MIT License. See LICENSE for more information.
-I do not own any right to any assets used in this application and wont be further distributed 
+I do not own any right to any assets used in this application and wont be further distributed
 
 Made by @TomassSimko
 2023 SDE cs project posted here on GitHub. <br>
@@ -154,7 +163,8 @@ TTT :black_nib:
 
 ## Contact
 
-Tomas Simko - [@twitter](https://twitter.com/TomasSimko_) -simko.t@email.cz - [@linkedIn](https://www.linkedin.com/in/tomas-simko/)
+Tomas Simko - [@twitter](https://twitter.com/TomasSimko_)
+-simko.t@email.cz - [@linkedIn](https://www.linkedin.com/in/tomas-simko/)
 
 Project Link: [https://github.com/TomassSimko/gui-streaming-platform]()
 

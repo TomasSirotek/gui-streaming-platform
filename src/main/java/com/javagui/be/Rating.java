@@ -37,6 +37,6 @@ public class Rating {
 
     @Override
     public String toString() {
-        return "rating=" + Math.round(rating*10)/10.0;
+        return "rating=" + Math.round(rating * 10) / 10.0;
     }
 }

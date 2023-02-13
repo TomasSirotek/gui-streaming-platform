@@ -1,7 +1,5 @@
 package com.javagui;
 
-import com.javagui.gui.controller.AbstractController;
-import com.javagui.gui.controller.ControllerFactory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.BoundingBox;
@@ -16,6 +14,10 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class Main extends Application {
+
+    public static void main(String[] args) {
+        launch();
+    }
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -52,9 +54,5 @@ public class Main extends Application {
             prefHeight = node.prefHeight(-1);
         }
         return new BoundingBox(0, 0, prefWidth, prefHeight);
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }

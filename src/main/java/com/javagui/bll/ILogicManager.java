@@ -10,9 +10,13 @@ import java.util.List;
 
 public interface ILogicManager {
     List<Movie> getTopAverageRatedMovies(User u);
+
     List<Movie> getTopAverageRatedMoviesUserDidNotSee(User u);
+
     List<UserSimilarity> getTopSimilarUsers(User user);
+
     List<TopMovie> getTopMoviesFromSimilarPeople(User u);
+
     User getUser(String userName);
 
     Collection<User> getAllUsers();
