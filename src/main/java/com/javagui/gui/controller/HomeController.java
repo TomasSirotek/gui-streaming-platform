@@ -39,19 +39,14 @@ public class HomeController extends AbstractController implements Initializable 
     @FXML
     private MFXScrollPane pane, pane1, pane2;
 
-    private AppModel appModel;
+    private final String PLACEHOLDER_IMG = "https://www.retro-synthwave.com/wp-content/uploads/2019/09/American-Horror-Story-1984-9.jpg";
 
-    private IApiService apiService;
-
-    private long timerStartMillis = 0;
-    private String timerMsg = "";
-
+    private final int NUMBER_TO_DISPLAY = 10;
     private final CurrentUser currUser = CurrentUser.getInstance();
 
-    private final String PLACEHOLDER_IMG = "https://www.retro-synthwave.com/wp-content/uploads/2019/09/American-Horror-Story-1984-9.jpg";
-    private final int NUMBER_TO_DISPLAY = 10;
-
     private LoginController loginController;
+    private AppModel appModel;
+    private IApiService apiService;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -62,7 +57,6 @@ public class HomeController extends AbstractController implements Initializable 
         this.appModel = appModel;
         btn.setOnAction(this::logOut);
 
-        startTimer("Loading all data for user: " + currUser);
         Task<Void> loadDataTask = new Task<>() {
             @Override
             protected Void call() {
@@ -71,23 +65,11 @@ public class HomeController extends AbstractController implements Initializable 
             }
         };
         loadDataTask.setOnSucceeded(event -> {
-            stopTimer();
-            startTimer("Filling UI took");
             fillUI();
-            stopTimer();
             progressBar.setVisible(false);
         });
         new Thread(loadDataTask).start();
 
-    }
-
-    private void stopTimer() {
-        System.out.println(timerMsg + " took : " + (System.currentTimeMillis() - timerStartMillis) + "ms");
-    }
-
-    private void startTimer(String message) {
-        timerStartMillis = System.currentTimeMillis();
-        timerMsg = message;
     }
 
     public void logOut(ActionEvent actionEvent) {
@@ -105,14 +87,13 @@ public class HomeController extends AbstractController implements Initializable 
         swapViews(finalParent.getView());
     }
 
-
     public void fillUI() {
-        constructPane(NUMBER_TO_DISPLAY,pane, appModel.getObsTopMovieSeen());
-        constructPane(NUMBER_TO_DISPLAY,pane1, appModel.getObsTopMoviesSimilarUsers());
-        constructPane(NUMBER_TO_DISPLAY,pane2, appModel.getObsTopMovieNotSeen());
+        constructPane(NUMBER_TO_DISPLAY, pane, appModel.getObsTopMovieSeen());
+        constructPane(NUMBER_TO_DISPLAY, pane1, appModel.getObsTopMoviesSimilarUsers());
+        constructPane(NUMBER_TO_DISPLAY, pane2, appModel.getObsTopMovieNotSeen());
     }
 
-    private void constructPane(int numberToDisplay,MFXScrollPane pane, ObservableList<?> movieList) {
+    private void constructPane(int numberToDisplay, MFXScrollPane pane, ObservableList<?> movieList) {
         pane.setContent(constructGridPane(numberToDisplay, movieList));
         pane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
     }
@@ -226,7 +207,6 @@ public class HomeController extends AbstractController implements Initializable 
             }
         };
     }
-
 
     private Label constructLabel(String name) {
         Label label = new Label(name);

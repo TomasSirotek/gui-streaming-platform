@@ -2,35 +2,11 @@
 
 * {
     -fx-font-family: 'Montserrat';
-    -fx-nord0: #192C35;
-    -fx-nord1: #4FC4F4;
-    -fx-nord2: #434C5E;
-    -fx-nord3: #4C566A;
-    -fx-nord4: #D8DEE9;
-    -fx-nord5: #E5E9F0;
-    -fx-nord6: #ECEFF4;
-    -fx-nord7: #8FBCBB;
-    -fx-nord8: #88C0D0;
-    -fx-nord9: #81A1C1;
-    -fx-nord10: #5E81AC;
+    -fx-nord0: #0063e5;
 }
-
-/*.root {*/
-/*    -fx-font: 14px Montserrat;*/
-/*    -fx-background-color: #31343e;*/
-/*}*/
 
 .root{
-    /*-fx-font-family:'Montserrat';*/
-    /*-fx-font-family: "Source Code Pro";*/
-
-    /*-fx-background-color: #31343e;*/
-    /*-fx-background-size: cover;*/
     -fx-font-weight: 700;
-}
-
-.hero-banner{
-    -fx-background-size: cover;
 }
 
 .content-pane{
@@ -38,17 +14,66 @@
     -fx-background-size: cover;
 }
 
+.action-button{
+    -fx-font-size: 14;
+    -fx-font-weight: 600;
+    -fx-border-radius: 5;
+    -fx-background-color: -fx-nord0;
+    -fx-border-color:-fx-nord0;
+    -fx-cursor: HAND;
+}
 
-.test-pane{
+/* LOGIN PAGE*/
+.login-pane{
     -fx-background-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
     -fx-background-radius: 10;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
     -fx-padding: 10;
 }
-
 .login-label{
     -fx-font-size: 16;
 }
+
+.err-label{
+    -fx-font-size: 12;
+}
+
+.input-field{
+    -fx-background-color: rgba(255, 255, 255, 0.8);
+    -fx-text-fill: black;
+    -fx-font-size:14;
+
+}
+.mfx-password-field:focused{
+    -fx-border-width: 3;
+    -fx-border-color: -fx-nord0;
+}
+
+.mfx-text-field .text-field:focused {
+    -fx-focus-color: -fx-nord0;
+    -fx-faint-focus-color: -fx-nord0;
+}
+.mfx-text-field{
+    -fx-focus-traversable: false;
+}
+
+.mfx-text-field:focused{
+    -fx-border-width: 3;
+    -fx-border-color: -fx-nord0;
+}
+
+.input-field:focused {
+    -fx-border-width: 3;
+    -fx-border-color: -fx-nord0;
+}
+
+.input-field .text-input {
+    -fx-prompt-text-fill: grey;
+    -fx-text-fill: black;
+    -fx-font-size:12;
+}
+
+/* HOME VIEW */
 
 .image-card:hover {
     -fx-scale-x: 1.1;
@@ -68,57 +93,8 @@
     -fx-opacity: 0;
     -fx-transition: opacity 0.3s;
 }
-
-.input-field{
-    -fx-background-color: rgba(255, 255, 255, 0.8);
-    -fx-text-fill: black;
-    -fx-font-size:14;
-
-}
-.mfx-password-field:focused{
-    -fx-border-width: 3;
-    -fx-border-color: #0063e5;
-}
-
-.mfx-text-field .text-field:focused {
-    -fx-focus-color: #0063e5;
-    -fx-faint-focus-color: #0063e5;
-}
-.mfx-text-field{
-    -fx-focus-traversable: false;
-}
-
-.mfx-text-field:focused{
-    -fx-border-width: 3;
-    -fx-border-color: #0063e5;
-}
-
-.input-field:focused {
-    -fx-border-width: 3;
-    -fx-border-color: #0063e5;
-}
-
-.input-field .text-input {
-    -fx-prompt-text-fill: grey;
-    -fx-text-fill: black;
-    -fx-font-size:12;
-}
-
 .text-label {
     visibility: hidden;
-}
-
-.err-label{
-    -fx-font-size: 12;
-}
-
-.action-button{
-    -fx-font-size: 14;
-    -fx-font-weight: 600;
-    -fx-border-radius: 5;
-    -fx-background-color: #0063e5;
-    -fx-border-color: #0063e5;
-    -fx-cursor: HAND;
 }
 
 

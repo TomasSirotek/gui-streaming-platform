@@ -84,7 +84,7 @@
    <center>
       <StackPane fx:id="contentPane" prefWidth="1071.0" styleClass="content-pane" BorderPane.alignment="CENTER">
          <children>
-            <GridPane maxHeight="357.0" maxWidth="257.0" prefHeight="357.0" prefWidth="257.0" styleClass="test-pane">
+            <GridPane maxHeight="357.0" maxWidth="257.0" prefHeight="357.0" prefWidth="257.0" styleClass="login-pane">
               <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
