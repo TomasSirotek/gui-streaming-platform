@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500;600;700&display=swap');
 
-
 * {
+    -fx-font-family: 'Montserrat';
     -fx-nord0: #192C35;
     -fx-nord1: #4FC4F4;
     -fx-nord2: #434C5E;
@@ -22,26 +22,32 @@
 
 .root{
     /*-fx-font-family:'Montserrat';*/
-    -fx-font: 14px Montserrat;
+    /*-fx-font-family: "Source Code Pro";*/
+
     /*-fx-background-color: #31343e;*/
-    -fx-background-image: url("../assets/bg-test.jpeg");
     -fx-background-size: cover;
-    -fx-font-weight: bold;
+    -fx-font-weight: 700;
 }
 
+.hero-banner{
+    -fx-background-image: contain;
+    -fx-background-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
+/*-fx-background-image: url("../assets/bg-test.jpeg");*/
+
+
 .test-pane{
-    -fx-background-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5));
+    -fx-background-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
     -fx-background-radius: 10;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
     -fx-padding: 10;
 }
 
 .login-label{
-    -fx-font-weight: bold;
     -fx-font-size: 16;
 }
-
-
 
 .image-card:hover {
     -fx-scale-x: 1.1;
@@ -65,23 +71,44 @@
 .input-field{
     -fx-background-color: rgba(255, 255, 255, 0.8);
     -fx-text-fill: black;
-    -fx-font-size:12;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
-}
-.input-field .text-input{
-    -fx-prompt-text-fill: black;
-    -fx-text-fill: black;
-    -fx-font-size:18;
+    -fx-font-size:14;
 
 }
-
-.input-field .text-input .input-field:selected{
+.mfx-password-field:focused{
+    -fx-border-width: 3;
     -fx-border-color: #0063e5;
-    -fx-background-color: red;
+}
+
+.mfx-text-field .text-field:focused {
+    -fx-focus-color: #0063e5;
+    -fx-faint-focus-color: #0063e5;
+}
+.mfx-text-field{
+    -fx-focus-traversable: false;
+}
+
+.mfx-text-field:focused{
+    -fx-border-width: 3;
+    -fx-border-color: #0063e5;
+}
+
+.input-field:focused {
+    -fx-border-width: 3;
+    -fx-border-color: #0063e5;
+}
+
+.input-field .text-input {
+    -fx-prompt-text-fill: grey;
+    -fx-text-fill: black;
+    -fx-font-size:12;
 }
 
 .text-label {
     visibility: hidden;
+}
+
+.err-label{
+    -fx-font-size: 12;
 }
 
 .action-button{

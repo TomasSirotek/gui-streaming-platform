@@ -64,7 +64,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                        <MFXButton fx:id="navActionBtn" prefHeight="32.0" prefWidth="83.0" styleClass="action-button" text="SIGN UP " textFill="WHITE" GridPane.columnIndex="1">
+                        <MFXButton fx:id="navActionBtn" buttonType="RAISED" depthLevel="LEVEL3" prefHeight="30.0" prefWidth="99.0" styleClass="action-button" text="SIGN UP " textFill="WHITE" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets right="20.0" />
                      </GridPane.margin>
@@ -91,11 +91,11 @@
               <rowConstraints>
                 <RowConstraints maxHeight="119.21089172363281" minHeight="10.0" prefHeight="108.23902893066406" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="27.480667114257812" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="53.51933288574219" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="42.483306884765625" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="118.07635498046875" minHeight="10.0" prefHeight="12.705810546875" valignment="CENTER" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="40.03741455078125" valignment="BOTTOM" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="50.919403076171875" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="58.80328369140625" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="54.922149658203125" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="118.07635498046875" minHeight="10.0" prefHeight="16.922149658203125" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="44.077850341796875" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="28.647552490234375" valignment="TOP" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <ImageView fitHeight="82.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
@@ -105,7 +105,7 @@
                   </ImageView>
                   <MFXPasswordField fx:id="pswField" floatMode="DISABLED" maxHeight="36.0" prefHeight="36.0" prefWidth="200.0" promptText="Password" styleClass="input-field" GridPane.rowIndex="3" />
                   <MFXTextField fx:id="emailField" floatMode="DISABLED" prefHeight="34.0" prefWidth="199.0" promptText="Email" styleClass="input-field" text="Georgi Facello" GridPane.rowIndex="2" />
-                  <Label prefHeight="19.0" prefWidth="200.0" styleClass="login-label" text="Log in with your credentials" textFill="WHITE" GridPane.rowIndex="1">
+                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="199.0" styleClass="login-label" text="Log in to your account " textFill="WHITE" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -123,21 +123,24 @@
                      </font></MFXButton>
                   <HBox GridPane.rowIndex="6">
                      <children>
-                        <Label opacity="0.57" prefHeight="16.0" prefWidth="76.0" text="New to Disney+ " textFill="WHITE">
+                        <Label opacity="0.57" prefHeight="16.0" prefWidth="88.0" text="New to Disney+ " textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="10.0" />
                            </font>
                            <HBox.margin>
-                              <Insets />
+                              <Insets top="5.0" />
                            </HBox.margin>
                         </Label>
-                        <Label opacity="0.57" prefHeight="16.0" prefWidth="73.0" text="Sign up" textFill="#5e89f7" underline="true">
+                        <Label opacity="0.57" prefHeight="16.0" prefWidth="73.0" text="Sign up" textFill="#78a3ff" underline="true">
                            <font>
                               <Font name="System Bold" size="11.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
                         </Label>
                      </children>
                      <effect>
@@ -158,7 +161,7 @@
                         <Color red="0.25882354378700256" green="0.5215686559677124" blue="0.95686274766922" />
                      </color4>
                   </MFXProgressSpinner>
-                  <Label fx:id="errorLabel" prefHeight="19.0" prefWidth="195.0" text="Please fill all fields *" textFill="#e40000" visible="false" GridPane.rowIndex="4">
+                  <Label fx:id="errorLabel" prefHeight="19.0" prefWidth="195.0" styleClass="err-label" text="Please fill all fields *" textFill="#e40000" visible="false" GridPane.rowIndex="4">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>

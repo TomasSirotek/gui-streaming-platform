@@ -30,6 +30,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -104,7 +108,7 @@ public class HomeController extends AbstractController implements Initializable 
     }
 
     private void constructPane(MFXScrollPane pane, ObservableList<?> movieList) {
-        pane.setContent(constructGridPane(10, movieList));
+        pane.setContent(constructGridPane(20, movieList));
         pane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
     }
 
@@ -128,60 +132,98 @@ public class HomeController extends AbstractController implements Initializable 
                 .parallel()
                 .forEach(i -> {
                     Object obj = randomMovies.get(i);
-                    Label[] labels = { null, null, null};
+                   Label movieTitle;
                     if (obj instanceof Movie) {
-                        labels[0] = constructLabel(((Movie) obj).getTitle());
+                        movieTitle = constructLabel(((Movie) obj).getTitle());
 //                        labels[1] = constructLabel(String.valueOf(((Movie) obj).getYear()));
 //                        labels[2] = constructLabel(String.valueOf(((Movie) obj).getAverageRating()));
                     } else if (obj instanceof TopMovie) {
-                        labels[0] = constructLabel(((TopMovie) obj).getMovie().getTitle());
+                        movieTitle = constructLabel(((TopMovie) obj).getMovie().getTitle());
 //                        labels[1] = constructLabel(String.valueOf(((TopMovie) obj).getYear()));
 //                        labels[2] = constructLabel(String.valueOf(((TopMovie) obj).getAverageRating()));
+                    } else {
+                        movieTitle = null;
                     }
 
-                    if (labels != null) {
-                        var imageView = new ImageView("https://www.retro-synthwave.com/wp-content/uploads/2021/05/02-army-of-the-dead-poster.jpg");
-                        imageView.setFitHeight(200);
-                        imageView.setFitWidth(140);
-                        StackPane stackPane = constructStackPane(labels,imageView);
-                        synchronized (pane2) {
-                            pane2.add(stackPane, i, 0);
-                        }
+                    if (movieTitle != null) {
+                       // var imageView = new ImageView("https://www.retro-synthwave.com/wp-content/uploads/2021/05/02-army-of-the-dead-poster.jpg");
+                        Task<ImageView> imageTask = constructImage(movieTitle);
+                        imageTask.setOnSucceeded(event -> {
+                            ImageView imageView = imageTask.getValue();
+                            StackPane stackPane = constructStackPane(movieTitle, imageView);
+                            synchronized (pane2) {
+                                pane2.add(stackPane, i, 0);
+                            }
+                        });
+                        new Thread(imageTask).start();
+
+//                        var imageView = constructImage(movieTitle);
+//                        imageView.setFitHeight(200);
+//                        imageView.setFitWidth(140);
+//                        StackPane stackPane = constructStackPane(movieTitle,imageView);
+//                        synchronized (pane2) {
+//                            pane2.add(stackPane, i, 0);
+//                        }
                     }
                 });
        return pane2;
     }
 
-    private StackPane constructStackPane(Label[] labels,ImageView imageView) {
+    private StackPane constructStackPane(Label labels,ImageView imageView) {
         StackPane stack = new StackPane();
-        stack.getChildren().addAll(imageView,labels[0]);
-//        Arrays.stream(labels).forEach(x -> stack.getChildren().add(x));
+        stack.getChildren().addAll(imageView,labels);
         stack.getStyleClass().add("image-card");
         stack.setAlignment(Pos.CENTER);
         GridPane.setHgrow(stack, Priority.ALWAYS);
         return stack;
     }
 
-    private ImageView constructImage(Label label) {
+//    private ImageView constructImage(Label label) {
+//
+//        String labelText = label.getText();
+//        int colonIndex = labelText.indexOf(":");
+//        if (colonIndex != -1) {
+//            labelText = labelText.substring(0, colonIndex).trim();
+//        }
+//        MovieDTO movieDTO = apiService.getMovieByTitle(labelText);
+//        ImageView imageView = new ImageView();
+//        if (movieDTO.Poster != null && !movieDTO.Poster.equals("N/A")) {
+//            imageView.setImage(new Image(movieDTO.Poster));
+//        } else {
+//            imageView.setImage(new Image("https://www.retro-synthwave.com/wp-content/uploads/2020/08/le-doc.jpg"));
+//        }
+//
+//        imageView.setPreserveRatio(true);
+//        imageView.setFitHeight(200);
+//        imageView.setFitWidth(140);
+//        return imageView;
+//    }
 
-        String labelText = label.getText();
-        int colonIndex = labelText.indexOf(":");
-        if (colonIndex != -1) {
-            labelText = labelText.substring(0, colonIndex).trim();
-        }
-        MovieDTO movieDTO = apiService.getMovieByTitle(labelText);
-        ImageView imageView = new ImageView();
-        if (movieDTO.Poster != null && !movieDTO.Poster.equals("N/A")) {
-            imageView.setImage(new Image(movieDTO.Poster));
-        } else {
-            imageView.setImage(new Image("https://www.retro-synthwave.com/wp-content/uploads/2020/08/le-doc.jpg"));
-        }
+    private Task<ImageView> constructImage(Label label) {
+        return new Task<>() {
+            @Override
+            protected ImageView call() {
+                String labelText = label.getText();
+                int colonIndex = labelText.indexOf(":");
+                if (colonIndex != -1) {
+                    labelText = labelText.substring(0, colonIndex).trim();
+                }
+                MovieDTO movieDTO = apiService.getMovieByTitle(labelText);
+                ImageView imageView = new ImageView();
+                if (movieDTO.Poster != null && !movieDTO.Poster.equals("N/A")) {
+                    imageView.setImage(new Image(movieDTO.Poster));
+                } else {
+                    imageView.setImage(new Image("https://www.retro-synthwave.com/wp-content/uploads/2020/08/le-doc.jpg"));
+                }
 
-        imageView.setPreserveRatio(true);
-        imageView.setFitHeight(200);
-        imageView.setFitWidth(140);
-        return imageView;
+                imageView.setPreserveRatio(true);
+                imageView.setFitHeight(200);
+                imageView.setFitWidth(140);
+                return imageView;
+            }
+        };
     }
+
 
     private Label constructLabel(String name) {
         Label label = new Label(name);
