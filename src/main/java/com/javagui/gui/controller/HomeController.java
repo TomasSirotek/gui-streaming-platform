@@ -7,6 +7,7 @@ import com.javagui.bll.api.IApiService;
 import com.javagui.gui.model.AppModel;
 import com.javagui.gui.model.CurrentUser;
 import com.javagui.gui.model.MovieDTO;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXProgressBar;
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
 import javafx.collections.ObservableList;
@@ -16,24 +17,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -41,7 +37,7 @@ public class HomeController extends AbstractController implements Initializable 
     @FXML
     private MFXProgressBar progressBar;
     @FXML
-    private MFXScrollPane pane,pane1,pane2;
+    private MFXScrollPane pane, pane1, pane2;
 
     private AppModel appModel;
 
@@ -51,15 +47,20 @@ public class HomeController extends AbstractController implements Initializable 
     private String timerMsg = "";
 
     private final CurrentUser currUser = CurrentUser.getInstance();
+
+    private final String PLACEHOLDER_IMG = "https://www.retro-synthwave.com/wp-content/uploads/2019/09/American-Horror-Story-1984-9.jpg";
+    private final int NUMBER_TO_DISPLAY = 10;
+
     private LoginController loginController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-         this.apiService = new ApiService();
+        this.apiService = new ApiService();
     }
 
-    public void setData(AppModel appModel){
+    public void setData(AppModel appModel, MFXButton btn) {
         this.appModel = appModel;
+        btn.setOnAction(this::logOut);
 
         startTimer("Loading all data for user: " + currUser);
         Task<Void> loadDataTask = new Task<>() {
@@ -77,18 +78,19 @@ public class HomeController extends AbstractController implements Initializable 
             progressBar.setVisible(false);
         });
         new Thread(loadDataTask).start();
+
     }
 
-    private void stopTimer(){
+    private void stopTimer() {
         System.out.println(timerMsg + " took : " + (System.currentTimeMillis() - timerStartMillis) + "ms");
     }
 
-    private void startTimer(String message){
+    private void startTimer(String message) {
         timerStartMillis = System.currentTimeMillis();
         timerMsg = message;
     }
 
-    private void logOut(ActionEvent actionEvent) {
+    public void logOut(ActionEvent actionEvent) {
         CurrentUser.getInstance().logout();
         AbstractController parent = null;
         try {
@@ -96,108 +98,108 @@ public class HomeController extends AbstractController implements Initializable 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Success: You have been successfully logged out");
+        alert.show();
         AbstractController finalParent = parent;
         swapViews(finalParent.getView());
     }
 
 
     public void fillUI() {
-        constructPane(pane, appModel.getObsTopMovieSeen());
-        constructPane(pane1, appModel.getObsTopMoviesSimilarUsers());
-        constructPane(pane2, appModel.getObsTopMovieNotSeen());
+        constructPane(NUMBER_TO_DISPLAY,pane, appModel.getObsTopMovieSeen());
+        constructPane(NUMBER_TO_DISPLAY,pane1, appModel.getObsTopMoviesSimilarUsers());
+        constructPane(NUMBER_TO_DISPLAY,pane2, appModel.getObsTopMovieNotSeen());
     }
 
-    private void constructPane(MFXScrollPane pane, ObservableList<?> movieList) {
-        pane.setContent(constructGridPane(20, movieList));
+    private void constructPane(int numberToDisplay,MFXScrollPane pane, ObservableList<?> movieList) {
+        pane.setContent(constructGridPane(numberToDisplay, movieList));
         pane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
     }
 
-
-    /**
-     * main method for creation grid sections
-     * @return constructed GridPane with its elements
-     */
-    private GridPane constructGridPane(int amountToDisplay,ObservableList<?> movieList){
-        Objects.requireNonNull(movieList,"List of movies cannot be empty");
+    private GridPane constructGridPane(int amountToDisplay, ObservableList<?> movieList) {
+        Objects.requireNonNull(movieList, "List of movies cannot be empty");
         GridPane pane2 = new GridPane();
         pane2.setHgap(10);
         pane2.setVgap(10);
         pane2.setAlignment(Pos.CENTER);
 
+        Collections.shuffle(movieList);
         List<Object> randomMovies = movieList.stream()
                 .limit(amountToDisplay)
+                .distinct()
                 .collect(Collectors.toList());
 
         IntStream.range(0, amountToDisplay)
                 .parallel()
                 .forEach(i -> {
                     Object obj = randomMovies.get(i);
-                   Label movieTitle;
+                    Label movieTitle, movieYear, movieRating;
                     if (obj instanceof Movie) {
                         movieTitle = constructLabel(((Movie) obj).getTitle());
-//                        labels[1] = constructLabel(String.valueOf(((Movie) obj).getYear()));
-//                        labels[2] = constructLabel(String.valueOf(((Movie) obj).getAverageRating()));
+                        movieYear = constructLabel(String.valueOf(((Movie) obj).getYear()));
+                        movieRating = constructLabel(String.valueOf(((Movie) obj).getAverageRating()));
                     } else if (obj instanceof TopMovie) {
                         movieTitle = constructLabel(((TopMovie) obj).getMovie().getTitle());
-//                        labels[1] = constructLabel(String.valueOf(((TopMovie) obj).getYear()));
-//                        labels[2] = constructLabel(String.valueOf(((TopMovie) obj).getAverageRating()));
+                        movieYear = constructLabel(String.valueOf(((TopMovie) obj).getYear()));
+                        movieRating = constructLabel(String.valueOf(((TopMovie) obj).getAverageRating()));
                     } else {
                         movieTitle = null;
+                        movieYear = null;
+                        movieRating = null;
                     }
 
                     if (movieTitle != null) {
-                       // var imageView = new ImageView("https://www.retro-synthwave.com/wp-content/uploads/2021/05/02-army-of-the-dead-poster.jpg");
+                        Label[] labels = {movieTitle, movieYear, movieRating};
+                        resolveRatings(movieRating);
+
                         Task<ImageView> imageTask = constructImage(movieTitle);
                         imageTask.setOnSucceeded(event -> {
                             ImageView imageView = imageTask.getValue();
-                            StackPane stackPane = constructStackPane(movieTitle, imageView);
+                            StackPane stackPane = constructStackPane(labels, imageView);
                             synchronized (pane2) {
                                 pane2.add(stackPane, i, 0);
                             }
                         });
                         new Thread(imageTask).start();
-
-//                        var imageView = constructImage(movieTitle);
-//                        imageView.setFitHeight(200);
-//                        imageView.setFitWidth(140);
-//                        StackPane stackPane = constructStackPane(movieTitle,imageView);
-//                        synchronized (pane2) {
-//                            pane2.add(stackPane, i, 0);
-//                        }
                     }
                 });
-       return pane2;
+        return pane2;
     }
 
-    private StackPane constructStackPane(Label labels,ImageView imageView) {
+    private void resolveRatings(Label movieRating) {
+        if (Double.parseDouble(movieRating.getText()) >= 4.5) {
+            movieRating.setText("★★★★★");
+        } else if (Double.parseDouble(movieRating.getText()) >= 3.5) {
+            movieRating.setText("★★★★☆");
+        } else if (Double.parseDouble(movieRating.getText()) >= 2.5) {
+            movieRating.setText("★★★☆☆");
+        } else if (Double.parseDouble(movieRating.getText()) >= 1.5) {
+            movieRating.setText("★★☆☆☆");
+        } else {
+            movieRating.setText("★☆☆☆☆");
+        }
+    }
+
+    private StackPane constructStackPane(Label[] labels, ImageView imageView) {
         StackPane stack = new StackPane();
-        stack.getChildren().addAll(imageView,labels);
+
+        VBox vbox = new VBox();
+        Arrays.stream(labels).forEach(x -> vbox.getChildren().add(x));
+        vbox.setAlignment(Pos.CENTER);
+
+        vbox.setVisible(false);
+
+        stack.getChildren().addAll(imageView, vbox);
         stack.getStyleClass().add("image-card");
+
+        stack.setOnMouseEntered(event -> vbox.setVisible(true));
+        stack.setOnMouseExited(event -> vbox.setVisible(false));
+
         stack.setAlignment(Pos.CENTER);
         GridPane.setHgrow(stack, Priority.ALWAYS);
         return stack;
     }
-
-//    private ImageView constructImage(Label label) {
-//
-//        String labelText = label.getText();
-//        int colonIndex = labelText.indexOf(":");
-//        if (colonIndex != -1) {
-//            labelText = labelText.substring(0, colonIndex).trim();
-//        }
-//        MovieDTO movieDTO = apiService.getMovieByTitle(labelText);
-//        ImageView imageView = new ImageView();
-//        if (movieDTO.Poster != null && !movieDTO.Poster.equals("N/A")) {
-//            imageView.setImage(new Image(movieDTO.Poster));
-//        } else {
-//            imageView.setImage(new Image("https://www.retro-synthwave.com/wp-content/uploads/2020/08/le-doc.jpg"));
-//        }
-//
-//        imageView.setPreserveRatio(true);
-//        imageView.setFitHeight(200);
-//        imageView.setFitWidth(140);
-//        return imageView;
-//    }
 
     private Task<ImageView> constructImage(Label label) {
         return new Task<>() {
@@ -210,10 +212,11 @@ public class HomeController extends AbstractController implements Initializable 
                 }
                 MovieDTO movieDTO = apiService.getMovieByTitle(labelText);
                 ImageView imageView = new ImageView();
+
                 if (movieDTO.Poster != null && !movieDTO.Poster.equals("N/A")) {
                     imageView.setImage(new Image(movieDTO.Poster));
                 } else {
-                    imageView.setImage(new Image("https://www.retro-synthwave.com/wp-content/uploads/2020/08/le-doc.jpg"));
+                    imageView.setImage(new Image(PLACEHOLDER_IMG));
                 }
 
                 imageView.setPreserveRatio(true);
@@ -228,32 +231,29 @@ public class HomeController extends AbstractController implements Initializable 
     private Label constructLabel(String name) {
         Label label = new Label(name);
 
-        label.setOpacity(0);
         label.setMaxWidth(Double.MAX_VALUE);
         label.setMaxHeight(Double.MAX_VALUE);
         label.setAlignment(Pos.CENTER);
         label.setMinWidth(140);
         label.setMinHeight(30);
         label.setTextFill(Color.WHITE);
-
-        label.setOnMouseEntered(event -> {
-            label.setOpacity(1);
-            label.setStyle("-fx-background-color: rgba(0, 0, 0, 0.4);");
-        });
-        label.setOnMouseExited(event -> label.setOpacity(0));
-
+        label.setStyle("-fx-background-color: rgba(0, 0, 0, 0.4);");
         return label;
     }
 
-
     private AbstractController loadNodes(String path) throws IOException {
-            return ControllerFactory.loadFxmlFile(path);
+        return ControllerFactory.loadFxmlFile(path);
     }
 
     private void swapViews(Parent parent) {
-        StackPane contentPane = (StackPane) getView().lookup("contentPane");
-        contentPane.getChildren().clear();
-        contentPane.getChildren().add(parent);
+        try {
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) getView().getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

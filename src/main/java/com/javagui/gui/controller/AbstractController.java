@@ -2,7 +2,6 @@ package com.javagui.gui.controller;
 
 import javafx.scene.Parent;
 import javafx.stage.Stage;
-
 import java.util.Objects;
 
 public abstract class AbstractController {

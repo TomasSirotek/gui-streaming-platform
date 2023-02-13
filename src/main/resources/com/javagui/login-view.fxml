@@ -47,7 +47,7 @@
                         <MFXButton fx:id="navItemThree" style="-fx-background-color: none;" text="Watchlist" textFill="WHITE" visible="false" GridPane.columnIndex="3" />
                         <ImageView fitHeight="40.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@assets/Disney_Plus_logo_PNG5.png" />
+                              <Image url="@assets/appLogo.png" />
                            </image>
                            <GridPane.margin>
                               <Insets />
@@ -82,7 +82,7 @@
             </GridPane>
          </top>
    <center>
-      <StackPane fx:id="contentPane" prefWidth="1071.0" BorderPane.alignment="CENTER">
+      <StackPane fx:id="contentPane" prefWidth="1071.0" styleClass="content-pane" BorderPane.alignment="CENTER">
          <children>
             <GridPane maxHeight="357.0" maxWidth="257.0" prefHeight="357.0" prefWidth="257.0" styleClass="test-pane">
               <columnConstraints>
@@ -100,7 +100,7 @@
                <children>
                   <ImageView fitHeight="82.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@assets/Disney_Plus_logo_PNG5.png" />
+                        <Image url="@assets/appLogo.png" />
                      </image>
                   </ImageView>
                   <MFXPasswordField fx:id="pswField" floatMode="DISABLED" maxHeight="36.0" prefHeight="36.0" prefWidth="200.0" promptText="Password" styleClass="input-field" GridPane.rowIndex="3" />

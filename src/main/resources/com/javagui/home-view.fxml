@@ -4,59 +4,51 @@
 <?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <MFXScrollPane fitToWidth="true" prefHeight="400.0" prefWidth="527.0" style="-fx-background-color: #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e;" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javagui.gui.controller.HomeController">
    <content>
-      <GridPane prefHeight="1240.0" prefWidth="513.0" style="-fx-background-color: #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e;">
+      <GridPane prefHeight="767.0" prefWidth="513.0" style="-fx-background-color: #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e;">
         <columnConstraints>
           <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="224.74400329589844" minHeight="0.0" prefHeight="0.0" vgrow="ALWAYS" />
-            <RowConstraints maxHeight="280.0" minHeight="10.0" prefHeight="225.72982788085938" valignment="BOTTOM" vgrow="NEVER" />
-            <RowConstraints maxHeight="234.0" minHeight="0.0" prefHeight="34.729827880859375" valignment="BOTTOM" vgrow="NEVER" />
-            <RowConstraints maxHeight="315.2701721191406" minHeight="10.0" prefHeight="315.2701721191406" vgrow="ALWAYS" />
-            <RowConstraints maxHeight="271.5" minHeight="6.0" prefHeight="36.053009033203125" valignment="BOTTOM" vgrow="NEVER" />
-            <RowConstraints maxHeight="290.6855163574219" minHeight="10.0" prefHeight="244.0750732421875" vgrow="ALWAYS" />
-            <RowConstraints maxHeight="271.5" minHeight="8.0" prefHeight="39.0750732421875" valignment="BOTTOM" vgrow="NEVER" />
-            <RowConstraints maxHeight="271.5" minHeight="10.0" prefHeight="245.9249267578125" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="224.74400329589844" minHeight="0.0" prefHeight="19.13946533203125" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="260.0" minHeight="0.0" prefHeight="28.527450561523438" valignment="BOTTOM" vgrow="NEVER" />
+            <RowConstraints maxHeight="556.0820159912109" minHeight="10.0" prefHeight="220.0" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="398.4589538574219" minHeight="6.0" prefHeight="33.34901428222656" valignment="BOTTOM" vgrow="NEVER" />
+            <RowConstraints maxHeight="634.1689147949219" minHeight="10.0" prefHeight="220.0" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="528.0594482421875" minHeight="0.0" prefHeight="39.62994384765625" valignment="BOTTOM" vgrow="NEVER" />
+            <RowConstraints maxHeight="627.6043090820312" minHeight="10.0" prefHeight="220.0" vgrow="ALWAYS" />
         </rowConstraints>
          <children>
-            <MFXScrollPane fx:id="pane" fitToHeight="true" fitToWidth="true" style="-fx-background-color: #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e;" GridPane.rowIndex="3" />
-            <Label prefWidth="368.0" text="Top avarage movies" textFill="WHITE" GridPane.rowIndex="2">
+            <MFXScrollPane fx:id="pane" fitToHeight="true" fitToWidth="true" style="-fx-background-color: #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e;" GridPane.rowIndex="2" />
+            <Label prefWidth="368.0" text="Top movies you have watched" textFill="WHITE" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label prefWidth="368.0" text="You might want to see " textFill="WHITE" GridPane.rowIndex="4">
+            <Label prefWidth="368.0" text="People like you watched" textFill="WHITE" GridPane.rowIndex="3">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <MFXScrollPane fx:id="pane1" fitToHeight="true" fitToWidth="true" prefWidth="493.0" style="-fx-background-color: #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e;" GridPane.rowIndex="5" />
-            <Label prefWidth="368.0" text="People like you watched" textFill="WHITE" GridPane.rowIndex="6">
+            <MFXScrollPane fx:id="pane1" fitToHeight="true" fitToWidth="true" prefWidth="493.0" style="-fx-background-color: #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e;" GridPane.rowIndex="4" />
+            <Label prefWidth="368.0" text="People like you watched" textFill="WHITE" GridPane.rowIndex="5">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <MFXScrollPane fx:id="pane2" fitToHeight="true" fitToWidth="true" prefWidth="493.0" style="-fx-background-color: #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e;" GridPane.rowIndex="7" />
-            <MFXProgressBar fx:id="progressBar" maxWidth="1.7976931348623157E308" prefHeight="4.0" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS" />
-            <VBox alignment="CENTER" GridPane.rowIndex="1">
+            <MFXScrollPane fx:id="pane2" fitToHeight="true" fitToWidth="true" prefWidth="493.0" style="-fx-background-color: #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e #31343e#31343e;" GridPane.rowIndex="6" />
+            <HBox prefWidth="449.0" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
                <children>
-                  <ImageView fitHeight="269.0" fitWidth="480.0" pickOnBounds="true" preserveRatio="true" styleClass="hero-banner">
-                     <image>
-                        <Image url="@../../../../../../../../../../w.jpeg" />
-                     </image>
-                  </ImageView>
+                  <MFXProgressBar fx:id="progressBar" maxWidth="1.7976931348623157E308" prefHeight="6.0" HBox.hgrow="ALWAYS" />
                </children>
-            </VBox>
+            </HBox>
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

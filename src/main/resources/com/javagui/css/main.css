@@ -25,17 +25,18 @@
     /*-fx-font-family: "Source Code Pro";*/
 
     /*-fx-background-color: #31343e;*/
-    -fx-background-size: cover;
+    /*-fx-background-size: cover;*/
     -fx-font-weight: 700;
 }
 
 .hero-banner{
-    -fx-background-image: contain;
-    -fx-background-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
-    -fx-background-radius: 10;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+    -fx-background-size: cover;
 }
-/*-fx-background-image: url("../assets/bg-test.jpeg");*/
+
+.content-pane{
+    -fx-background-image: url("../assets/mainBg.jpeg");
+    -fx-background-size: cover;
+}
 
 
 .test-pane{

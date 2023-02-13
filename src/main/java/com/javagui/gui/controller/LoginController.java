@@ -3,7 +3,6 @@ package com.javagui.gui.controller;
 import com.javagui.gui.model.AppModel;
 import com.javagui.gui.model.CurrentUser;
 import io.github.palexdev.materialfx.controls.*;
-import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -59,7 +58,6 @@ public class LoginController extends AbstractController implements Initializable
     public void tryLogin(ActionEvent actionEvent) {
         if (isValidated()) {
             spinner.setVisible(true);
-
             errorLabel.setText("");
 
             Task<Void> loadDataTask = new Task<>() {
@@ -131,7 +129,7 @@ public class LoginController extends AbstractController implements Initializable
         AbstractController finalParent = parent;
         HomeController homeController = (HomeController) finalParent;
         homeController.setParentController(this);
-        homeController.setData(appModel);
+        homeController.setData(appModel,navActionBtn);
         swapViews(finalParent.getView());
     }
 
