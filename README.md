@@ -7,7 +7,7 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-# gui-streaming-platform
+# Streaming-platform-javaFx
 
 :school_satchel: Compulsory Assignment | 2st Semester | SDE
 
@@ -32,7 +32,6 @@ What is the best way to present the recommendations to the user?
 # Solution 
 Create a GUI that shows recommendations to the user in a cool way.
 
-
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
@@ -48,6 +47,7 @@ Create a GUI that shows recommendations to the user in a cool way.
     <li><a href="#features">Features</a></li>
     <li><a href="#style-guide">Style guide</a></li>
     <li><a href="#application-design">Application design</a></li>
+    <li><a href="#application-design-patterns">Application design patterns</a></li>
     <li><a href="#licence">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -69,9 +69,10 @@ Create a GUI that shows recommendations to the user in a cool way.
 <!-- ABOUT THE PROJECT -->
 
 ## Features
-
-- [x] Login
+- [x] Abstract controller
+- [x] User authentication 
     - [x] Basic login with user name and password
+    - [x] User log out 
     - [x] Simple validation for empty fields 
     - [x] Complete error handling 
     - [x] Enhanced user experience with multithreading
@@ -83,17 +84,51 @@ Create a GUI that shows recommendations to the user in a cool way.
     - [x] Display of all movies with its title,year and rating 
     - [x] Dynamic star rating display ★★★★☆
     - [x] Dynamically created parts of GUI
-    - [x] Usage of CSS for UX enhancement
+    - [x] Usage of CSS for UX enhancement (Scrollpanes)
+      - [x] User is able to scroll left-to-right right-to-left in each movies recommendation to view amount that is displayed
+      - [x] Hover effect on each movie that displays necessary informations 
 - [x] Multithreading in Java Fx 
-    - [x]
+    - [x] Use of tasks,multithreading,tasks
+    - [X] Not blocking the main JavaFx thread loading all needed files 
 
-App back end is based on <br>
+Back end is based on <br>
 https://github.com/jeppeml/MovieRecommendationSystem-CachedImplementation
+
+## Style guide
+
+**Typography**
+* [Montserrat](https://fonts.google.com/specimen/Montserrat)
+
+Key parts why I chose to use this popular sans-serif font 
+  * _Legibility_ 
+    * Clean and modern design 
+  * _Character_ 
+    * Distinctive character 
+  * _Versatility_
+    * Can be used in wide range of applications 
+  
+    
+**Color pallet**
+* Primary color  [#0063e5]()
+* Secondary color [#000000]()
+
+**Effects** 
+
+* [Glassmorphism]()
+* [Gaussian blue]()
+* [DropShadow]()
+
+**Components**
+
+* [MaterialFx]()
+* [JavaFxBasicComponents]()
+* [Custom css]()
 
 ## Application design
 Application consist of two FXML views 
 - login-view.fxml
 - home-view.fxml
+
 ### Login page
 
 ![Login-page](https://user-images.githubusercontent.com/72190589/218592107-4080de78-063d-4d9b-a733-bb6bcccde2b7.png)
