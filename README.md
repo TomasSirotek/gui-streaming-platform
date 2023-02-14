@@ -152,8 +152,8 @@ Application consist of two FXML views
 
 ## Licence
 
-Distributed under the MIT License. See LICENSE for more information.
-I do not own any right to any assets used in this application and wont be further distributed
+Distributed under the MIT License. See LICENSE for more information. <br/>
+I do not claim to own any rights to any assets used in this application and the application ends here and wont be further distributed or developed.
 
 Made by @TomassSimko
 2023 SDE cs project posted here on GitHub. <br>
