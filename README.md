@@ -9,7 +9,7 @@
 
 # Streaming-platform-javaFx
 
-:school_satchel: Compulsory Assignment | 2st Semester | SDE
+:school_satchel: Compulsory Assignment | 2nd Semester | SDE
 
 ---
 
